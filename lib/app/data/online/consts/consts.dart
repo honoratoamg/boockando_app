@@ -3,10 +3,10 @@
 const URL_SERVER = 'http://10.0.2.2:3000/';
 
 /// Json-server's tables name
-const SERVER_TABLE_USER_NAME = 'user';
-const SERVER_TABLE_USER_BOOK = 'book';
-const SERVER_TABLE_USER_BASKET = 'basket';
-const SERVER_TABLE_USER_PURCHASE = 'purchase';
+const SERVER_TABLE_USER_NAME = 'users';
+const SERVER_TABLE_USER_BOOK = 'books';
+const SERVER_TABLE_USER_BASKET = 'baskets';
+const SERVER_TABLE_USER_PURCHASE = 'purchases';
 
 /// Json-server's urls paths
 const URL_USER = URL_SERVER + SERVER_TABLE_USER_NAME;

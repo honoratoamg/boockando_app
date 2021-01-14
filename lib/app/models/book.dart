@@ -2,38 +2,43 @@ import 'package:flutter/cupertino.dart';
 
 class Book {
   Book(
-      {this.bookId,
+      {this.id,
       this.title,
       this.price,
       this.author,
+      this.about,
       this.isbn,
       this.category,
       this.bookImage});
 
-  int bookId;
+  int id;
   String title;
   double price;
+  String about;
   String author;
   String isbn;
   String category;
   String bookImage;
 
-  Book.fromMap({Map<String, dynamic> map}) {
-    bookId = map['bookId'];
-    title = map['title'];
-    price = map['price'];
-    author = map['author'];
-    isbn = map['isbn'];
-    category = map['category'];
-    bookImage = map['bookImage'];
+  factory Book.fromJson({Map<String, dynamic> map}) {
+    return Book(
+        id: map['id'],
+        title: map['title'].toString(),
+        price: map['price'],
+        author: map['author'].toString(),
+        about: map['about'].toString(),
+        isbn: map['isbn'].toString(),
+        category: map['category'].toString(),
+        bookImage: map['bookImage'].toString());
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['bookId'] = bookId;
+    data['id'] = id;
     data['title'] = title;
     data['price'] = price;
     data['author'] = author;
+    data['about'] = about;
     data['isbn'] = isbn;
     data['category'] = category;
     data['bookImage'] = bookImage;
@@ -42,10 +47,11 @@ class Book {
   }
 
   setValues({@required Book inputBook}) {
-    bookId = inputBook.bookId;
+    id = inputBook.id;
     title = inputBook.title;
     price = inputBook.price;
     author = inputBook.author;
+    about = inputBook.about;
     isbn = inputBook.isbn;
     category = inputBook.category;
     bookImage = inputBook.bookImage;

@@ -12,7 +12,7 @@ class PurchaseDao {
 
       await db.insert(
         TABLE_PURCHASE_NAME,
-        purchase.toMap(),
+        purchase.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (ex) {
@@ -26,7 +26,7 @@ class PurchaseDao {
 
     await db.update(
       TABLE_PURCHASE_NAME,
-      purchase.toMap(),
+      purchase.toJson(),
       where: "${TABLE_BASKET_BOOKS_ATT_ID_USER} = ? and "
           " ${TABLE_BASKET_BOOKS_ATT_ID_BASKET} = ?",
       whereArgs: [purchase.userId, purchase.basketId],
@@ -56,7 +56,7 @@ class PurchaseDao {
       for (var i = 0; i < maps.length; i++) {
         if (maps[i][TABLE_PURCHASE_ATT_USER_ID] == userId &&
             maps[i][TABLE_PURCHASE_ATT_BASKET_ID] == basketId) {
-          userPurchase.add(Purchase.fromMap(map: maps[i]));
+          userPurchase.add(Purchase.fromJson(map: maps[i]));
         }
       }
       return userPurchase;

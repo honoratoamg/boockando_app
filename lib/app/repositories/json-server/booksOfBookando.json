@@ -1,0 +1,42 @@
+{
+  "users": [
+
+  ],
+
+  "baskets": [
+
+  ],
+  "purchases": [],
+  "books": [
+    {
+      "id": 1,
+      "title": "Unlocking Android",
+      "price": 60.5,
+      "isbn": "1933988673",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools.",
+      "author": "W. Frank Ableson",
+      "category": "Mobile"
+    },
+    {
+      "id": 2,
+      "title": "Android in Action, Second Edition",
+      "price": 100.5,
+      "isbn": "1935182722",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg",
+      "about": "A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools.",
+      "author": "W. Frank Ableson",
+      "category": "Java"
+    },
+    {
+      "id": 3,
+      "title": "Specification by Example",
+      "price": 50.5,
+      "isbn": "1617290084",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
+      "about": "A book about Software Engineering.",
+      "author": "Gojko Adzic",
+      "category": "Software Engineering"
+    }
+  ]
+}

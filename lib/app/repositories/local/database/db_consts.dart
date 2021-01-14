@@ -12,12 +12,12 @@ const TABLE_PURCHASE_NAME = "purchase";
 
 // Table attributes
 //User
-const TABLE_USER_ATT_ID = "userId"; //PK
+const TABLE_USER_ATT_ID = "id"; //PK
 const TABLE_USER_ATT_NAME = "name";
 const TABLE_USER_ATT_EMAIL = "email";
 
 //Book
-const TABLE_BOOK_ATT_ID = "bookId"; //PK
+const TABLE_BOOK_ATT_ID = "id"; //PK
 const TABLE_BOOK_ATT_TITLE = "title";
 const TABLE_BOOK_ATT_ABOUT = "about";
 const TABLE_BOOK_ATT_ISBN = "isbn";
@@ -26,7 +26,7 @@ const TABLE_BOOK_ATT_CATEGORY = "category";
 const TABLE_BOOK_ATT_IMAGE = "bookImage";
 
 //Basket
-const TABLE_BASKET_ATT_ID = "basketId"; //PK
+const TABLE_BASKET_ATT_ID = "id"; //PK
 const TABLE_BASKET_ATT_VALUE = "totalValue";
 
 //Basket Book

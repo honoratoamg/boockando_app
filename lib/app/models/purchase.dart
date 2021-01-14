@@ -9,15 +9,16 @@ class Purchase {
   String month;
   int isDeleted;
 
-  Purchase.fromMap({Map<String, dynamic> map}) {
-    basketId = map['basketId'];
-    day = map['day'];
-    userId = map['userId'];
-    month = map['month'];
-    isDeleted = map['isDeleted'];
+  factory Purchase.fromJson({Map<String, dynamic> map}) {
+    return Purchase(
+        basketId: map['basketId'],
+        day: map['day'].toString(),
+        userId: map['userId'],
+        month: map['month'].toString(),
+        isDeleted: map['isDeleted']);
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['basketId'] = basketId;
     data['userId'] = userId;

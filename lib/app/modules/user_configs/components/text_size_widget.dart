@@ -1,4 +1,4 @@
-import 'package:boockando_app/app/controllers/user_configs_controller.dart';
+import 'package:boockando_app/app/controllers/app_user_configs_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';

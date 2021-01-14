@@ -70,7 +70,7 @@ class BasketDao {
           .rawQuery("SELECT * FROM '$TABLE_USER_NAME' WHERE id = '$basketId'");
 
       if (result.isNotEmpty) {
-        return User.fromMap(map: result.first);
+        return User.fromJson(map: result.first);
       }
 
       return null;

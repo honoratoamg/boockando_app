@@ -30,7 +30,7 @@ class BasketBooksDao {
       where: "${TABLE_BASKET_BOOKS_ATT_ID_USER} = ? and "
           "${TABLE_BASKET_BOOKS_ATT_ID_BOOK} = ? and"
           " ${TABLE_BASKET_BOOKS_ATT_ID_BASKET} = ?",
-      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.basketId],
+      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.id],
     );
   }
 
@@ -43,7 +43,7 @@ class BasketBooksDao {
       where: "${TABLE_BASKET_BOOKS_ATT_ID_USER} = ? and "
           "${TABLE_BASKET_BOOKS_ATT_ID_BOOK} = ? and"
           " ${TABLE_BASKET_BOOKS_ATT_ID_BASKET} = ?",
-      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.basketId],
+      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.id],
     );
   }
 

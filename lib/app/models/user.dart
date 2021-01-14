@@ -1,27 +1,28 @@
 import 'package:flutter/cupertino.dart';
 
 class User {
-  User({this.userId, this.name, this.email});
-  int userId;
+  User({this.id, this.name, this.email});
+  int id;
   String name;
   String email;
 
-  User.fromMap({Map<String, dynamic> map}) {
-    userId = map['userId'];
-    name = map['name'];
-    email = map['email'];
+  factory User.fromJson({Map<String, dynamic> map}) {
+    return User(
+    id: map['id'],
+    name: map['name'].toString(),
+    email: map['email'].toString());
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['userId'] = userId;
+    data['id'] = id;
     data['name'] = name;
     data['email'] = email;
     return data;
   }
 
   setValues({@required User inputUser}) {
-    userId = inputUser.userId;
+    id = inputUser.id;
     name = inputUser.name;
     email = inputUser.email;
   }

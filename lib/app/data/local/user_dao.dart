@@ -12,7 +12,7 @@ class UserDao {
 
       await db.insert(
         TABLE_USER_NAME,
-        user.toMap(),
+        user.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (ex) {
@@ -26,9 +26,9 @@ class UserDao {
 
     await db.update(
       TABLE_USER_NAME,
-      user.toMap(),
+      user.toJson(),
       where: "id = ?",
-      whereArgs: [user.userId],
+      whereArgs: [user.id],
     );
   }
 
@@ -51,7 +51,7 @@ class UserDao {
         .rawQuery("SELECT * FROM '$tableName' WHERE name = '$username'");
 
     if (result.isNotEmpty) {
-      return User.fromMap(map: result.first);
+      return User.fromJson(map: result.first);
     }
 
     return null;
@@ -66,7 +66,7 @@ class UserDao {
       return List.generate(
         maps.length,
             (i) {
-          return User.fromMap(map: maps[i]);
+          return User.fromJson(map: maps[i]);
         },
       );
     } catch (ex) {

@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 
 class BasketBooks {
   BasketBooks(
-      {this.userId, this.bookId, this.basketId, this.bookPrice, this.bookQtd});
+      {this.userId, this.bookId, this.id, this.bookPrice, this.bookQtd});
   int userId;
   int bookId;
-  int basketId;
+  int id;
   double bookPrice;
   int bookQtd;
 
   BasketBooks.fromMap({Map<String, dynamic> map}) {
     userId = map['userId'];
     bookId = map['bookId'];
-    basketId = map['basketId'];
+    id = map['id'];
     bookPrice = map['bookPrice'];
     bookQtd = map['bookQtd'];
   }
@@ -21,7 +21,7 @@ class BasketBooks {
     final data = <String, dynamic>{};
     data['userId'] = userId;
     data['bookId'] = bookId;
-    data['basketId'] = basketId;
+    data['id'] = id;
     data['bookPrice'] = bookPrice;
     data['bookQtd'] = bookQtd;
     return data;
@@ -30,7 +30,7 @@ class BasketBooks {
   setValues({@required BasketBooks inputBasketBooks}) {
     userId = inputBasketBooks.userId;
     bookId = inputBasketBooks.bookId;
-    basketId = inputBasketBooks.basketId;
+    id = inputBasketBooks.id;
     bookPrice = inputBasketBooks.bookPrice;
     bookQtd = inputBasketBooks.bookQtd;
   }

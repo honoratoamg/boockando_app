@@ -3,7 +3,7 @@ import 'package:boockando_app/app/repositories/shared/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'controllers/user_configs_controller.dart';
+import 'controllers/app_user_configs_controller.dart';
 
 class AppWidget extends StatefulWidget {
   @override

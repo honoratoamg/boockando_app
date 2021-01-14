@@ -12,7 +12,7 @@ class BookDao {
 
       await db.insert(
         TABLE_BOOK_NAME,
-        book.toMap(),
+        book.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (ex) {
@@ -26,9 +26,9 @@ class BookDao {
 
     await db.update(
       TABLE_BOOK_NAME,
-      book.toMap(),
+      book.toJson(),
       where: "id = ?",
-      whereArgs: [book.bookId],
+      whereArgs: [book.id],
     );
   }
 
@@ -51,7 +51,7 @@ class BookDao {
         .rawQuery("SELECT * FROM '$tableName' WHERE name = '$bookTitle'");
 
     if (result.isNotEmpty) {
-      return Book.fromMap(map: result.first);
+      return Book.fromJson(map: result.first);
     }
 
     return null;
@@ -66,7 +66,7 @@ class BookDao {
       return List.generate(
         maps.length,
             (i) {
-          return Book.fromMap(map: maps[i]);
+          return Book.fromJson(map: maps[i]);
         },
       );
     } catch (ex) {
