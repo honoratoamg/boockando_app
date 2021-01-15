@@ -4,20 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-/// Esta classe retorna um widget referente a configuracao de tema escuro ou claro.
 class ChangeThemeWidget extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-/// Esta classe retorna um widget referente ao estado da configuracao de tema escuro ou claro.
 class _State extends State<ChangeThemeWidget> {
   final settings = Modular.get<UserConfigsController>();
   Map<AppThemesEnum, String> themeDescriptionMap = {
-    AppThemesEnum.system: "Tema do sistema.",
-    AppThemesEnum.lightTheme: "Tema claro",
-    AppThemesEnum.darkTheme: "Tema escuro.",
-    AppThemesEnum.highContrast: "Melhora a distinção.",
+    AppThemesEnum.system: "System theme",
+    AppThemesEnum.lightTheme: "Light Theme",
+    AppThemesEnum.darkTheme: "Dark Theme",
+    AppThemesEnum.highContrast: "Improves distinction",
   };
 
   @override
@@ -26,7 +24,7 @@ class _State extends State<ChangeThemeWidget> {
       builder: (context, value) {
         return Card(
           child: ListTile(
-            title: Text('Tema'),
+            title: Text('Theme'),
             subtitle: Text(themeDescriptionMap[settings.userTheme]),
             trailing: LightDarkThemeDropDownButton(),
           ),
@@ -36,7 +34,7 @@ class _State extends State<ChangeThemeWidget> {
   }
 }
 
-/// Esta classe retorna um widget de dropdown de menu escuro ou claro.
+/// Dropdown Widget
 class LightDarkThemeDropDownButton extends StatefulWidget {
   LightDarkThemeDropDownButton({Key key}) : super(key: key);
 
@@ -45,22 +43,22 @@ class LightDarkThemeDropDownButton extends StatefulWidget {
       LightDarkThemeDropDownButtonState();
 }
 
-/// Esta classe retorna um widget de dropdown de menu escuro ou claro.
+/// Dropdown widget
 class LightDarkThemeDropDownButtonState
     extends State<LightDarkThemeDropDownButton> {
   List<String> values = [
-    'Sistema',
-    'Tema Claro',
-    'Tema Escuro',
-    'Alto contraste'
+    'System',
+    'Light Theme',
+    'Dark Theme',
+    'High Contrast'
   ];
-  String dropdownValue = 'Sistema';
+  String dropdownValue = 'System';
   final settings = Modular.get<UserConfigsController>();
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      value: dropdownValue, //"settings.themeDescription,
+      value: dropdownValue,
       icon: Icon(Icons.more_vert),
       iconSize: 24,
       elevation: 16,
@@ -72,13 +70,13 @@ class LightDarkThemeDropDownButtonState
           dropdownValue = newValue;
           AppThemesEnum theme;
           switch (newValue) {
-            case 'Sistema':
+            case 'System':
               theme = AppThemesEnum.system;
               break;
-            case 'Tema Escuro':
+            case 'Dark Theme':
               theme = AppThemesEnum.darkTheme;
               break;
-            case 'Alto contraste':
+            case 'High Contrast':
               theme = AppThemesEnum.highContrast;
               break;
             default:

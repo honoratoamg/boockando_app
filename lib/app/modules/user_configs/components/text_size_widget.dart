@@ -3,8 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-
-/// Esta classe retorna um widget referente a configuracao do tamanho da fonte.
+/// Size Manager Widget
 class TextSizeWidget extends StatelessWidget {
   final settings = Modular.get<UserConfigsController>();
 
@@ -19,7 +18,7 @@ class TextSizeWidget extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               child: Text(
-                'Tamanho da fonte',
+                'Font Size',
               ),
             ),
             Container(child: TextSizeSlider()),
@@ -30,7 +29,7 @@ class TextSizeWidget extends StatelessWidget {
   }
 }
 
-/// Esta classe retorna um widget com slider referente ao tamanho da fonte.
+/// Slider Widget
 class TextSizeSlider extends StatelessWidget {
   final settings = Modular.get<UserConfigsController>();
 
@@ -59,15 +58,13 @@ class TextSizeSlider extends StatelessWidget {
                 min: 14,
                 max: 25,
                 divisions: 6,
-                //label:
-                //    "${MathUtils.round(number: settings.fontSize, decimalPlaces: 0)}",
                 onChanged: (newSliderValue) {
                   settings.fontSize = newSliderValue;
                 },
               ),
             ),
             RaisedButton(
-              child: Text('Tamanho padrão'),
+              child: Text('Default Size'),
               onPressed: settings.fontSize == settings.defaultFontSize
                   ? null
                   : () {

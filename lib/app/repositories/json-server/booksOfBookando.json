@@ -1,11 +1,19 @@
 {
   "users": [
-
+    {
+      "id": 5,
+      "name": "elizabeth",
+      "password": "test",
+      "email": "email@test.com"
+    },
+    {
+      "id": 6,
+      "name": "lena",
+      "password": "123",
+      "email": "lena@email.com"
+    }
   ],
-
-  "baskets": [
-
-  ],
+  "baskets": [],
   "purchases": [],
   "books": [
     {

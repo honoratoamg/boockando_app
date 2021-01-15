@@ -13,7 +13,7 @@ class BasketDao {
 
       await db.insert(
         TABLE_BASKET_NAME,
-        basket.toMap(),
+        basket.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (ex) {
@@ -27,7 +27,7 @@ class BasketDao {
 
     await db.update(
       TABLE_BASKET_NAME,
-      basket.toMap(),
+      basket.toJson(),
       where: "id = ?",
       whereArgs: [basket.basketId],
     );
@@ -53,7 +53,7 @@ class BasketDao {
       return List.generate(
         maps.length,
         (i) {
-          return Basket.fromMap(map: maps[i]);
+          return Basket.fromJson(map: maps[i]);
         },
       );
     } catch (ex) {

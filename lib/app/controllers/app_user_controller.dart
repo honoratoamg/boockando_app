@@ -1,40 +1,34 @@
-import 'package:boockando_app/app/data/online/user_online_dao.dart';
-import 'package:boockando_app/app/models/user.dart';
+import 'dart:convert';
+import 'package:boockando_app/app/modules/login/login_module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:boockando_app/app/data/online/user_online_dao.dart';
+import 'package:boockando_app/app/models/user.dart';
+import 'package:boockando_app/app/repositories/local/shared_prefs/shared_prefs.dart';
 
 class AppUserController extends ChangeNotifier {
   final userOnlineDao = Modular.get<UserOnlineDao>();
-  List<User> users;
+  User loggedUser;
 
-  initializeUsers() async {
+  initializeUser(User user) async {
     final appController = Modular.get<AppUserController>();
     await userOnlineDao
-        .getUsers()
-        .then((value) => appController.setUsers(value));
+        .getUser(userId: user.id)
+        .then((value) => appController.setUser(value));
   }
 
-  setUsers(List<User> users) {
-    this.users = users;
+  setUser(User user) {
+    loggedUser = user;
 
     notifyListeners();
   }
 
   updateUser(User user) async {
     await userOnlineDao.putUser(user: user);
-    users[getUserIndexById(userId: user.id)].setValues(inputUser: user);
+    loggedUser.setValues(inputUser: user);
 
     notifyListeners();
-  }
-
-  getUserIndexById({int userId}) {
-    for (var i = 0; i < users.length; i++) {
-      if (users[i].id == userId) {
-        return i;
-      }
-    }
-    return -1;
   }
 
   addUser(User user) async {
@@ -42,16 +36,54 @@ class AppUserController extends ChangeNotifier {
     await userOnlineDao.postUser(user: user).then((value) => user.id = value);
 
     // Add the user on memory
-    users.add(user);
+    loggedUser = user;
 
     //TODO Adicionar no database local
+    //TODO Adicionar no Shared Prefs
+
     notifyListeners();
   }
 
   deleteUser(User user) async {
+    // Delete the user from json-server
     await userOnlineDao.RemoveUser(idUser: user.id);
-    users.remove(user);
+    loggedUser = null;
 
     notifyListeners();
+  }
+
+  userLogout(User user){
+    spRemoveUser(user.name);
+    loggedUser = null;
+    Modular.to.pushReplacementNamed(LoginModule.routeName);
+  }
+
+  //SharedPrefs
+
+  spSaveLoggedUser(User user) {
+    SharedPrefs.save("loggedUser", jsonEncode(user));
+  }
+
+  spRemoveUser(String name) {
+    SharedPrefs.remove("loggedUser");
+  }
+
+  Future<User> spGetLoggedUser() async {
+    User user;
+    await SharedPrefs.contains("loggedUser").then((value) async {
+      if (value) {
+        await SharedPrefs.read("loggedUser").then((value) {
+          //Initialize a user
+          user = User(id: 0, email: "", password: "", name: "");
+
+          //Set values
+          user.setValues(inputUser: User.fromJson(map: jsonDecode(value)));
+          return user;
+        });
+      } else {
+        return null;
+      }
+    });
+    return user;
   }
 }

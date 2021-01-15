@@ -1,5 +1,5 @@
 import 'package:boockando_app/app/controllers/app_book_controller.dart';
-import 'package:boockando_app/app/modules/store/store_page.dart';
+import 'package:boockando_app/app/modules/store/store_module.dart';
 import 'package:boockando_app/app/modules/user_configs/user_configs_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +26,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       body: PageView(
         controller: controller.pageViewController,
         children: [
-          StorePage(),
-          Center(child: Text('Minhas compras')),
+          RouterOutlet(module: StoreModule()),
+          Center(child: Text('My purchases')),
           UserConfigsPage(),
         ],
       ),
@@ -50,15 +50,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.store),
-                label: 'Loja',
+                label: 'Store',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.web),
-                label: 'Minhas Compras',
+                label: 'Purchase History',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.miscellaneous_services),
-                label: 'Configurações',
+                label: 'Configurations',
               ),
             ],
           );

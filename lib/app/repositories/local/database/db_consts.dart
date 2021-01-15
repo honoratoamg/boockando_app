@@ -15,6 +15,7 @@ const TABLE_PURCHASE_NAME = "purchase";
 const TABLE_USER_ATT_ID = "id"; //PK
 const TABLE_USER_ATT_NAME = "name";
 const TABLE_USER_ATT_EMAIL = "email";
+const TABLE_USER_ATT_PASSWORD = "password";
 
 //Book
 const TABLE_BOOK_ATT_ID = "id"; //PK

@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:boockando_app/app/controllers/app_book_controller.dart';
 import 'package:boockando_app/app/controllers/app_user_controller.dart';
+import 'package:boockando_app/app/models/user.dart';
 import 'package:boockando_app/app/modules/home/home_module.dart';
+import 'package:boockando_app/app/modules/login/login_module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -55,10 +57,20 @@ class _SplashPageState extends State<SplashPage> {
     final userController = Modular.get<AppUserController>();
 
     await bookController.initializeBooks();
-    await userController.initializeUsers();
 
+    User user;
 
-    await Modular.to.pushNamed(HomeModule.routeName);
+    await userController
+        .spGetLoggedUser()
+        .then((value) => user = value);
 
+    if (user != null) {
+      //Initialize the memory list value
+      userController.setUser(user);
+
+      await Modular.to.pushNamed(HomeModule.routeName);
+    } else {
+      await Modular.to.pushReplacementNamed(LoginModule.routeName);
+    }
   }
 }

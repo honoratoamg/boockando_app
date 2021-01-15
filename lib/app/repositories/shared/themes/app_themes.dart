@@ -25,7 +25,7 @@ class ThemeCollection {
 
   static defaultTheme() {
     final settings = Modular.get<UserConfigsController>();
-    const primaryColor = Colors.pinkAccent;
+    const primaryColor = Colors.cyan;
 
     return ThemeData(
       appBarTheme: AppBarTheme(

@@ -1,4 +1,5 @@
 import 'package:boockando_app/app/data/online/user_online_dao.dart';
+import 'package:boockando_app/app/modules/login/login_module.dart';
 
 import 'controllers/app_basket_controller.dart';
 import 'controllers/app_book_controller.dart';
@@ -33,9 +34,9 @@ class AppModule extends MainModule {
   Widget get bootstrap => AppWidget();
 
   @override
-  // Modulos associados a este aplicativo
   List<ModularRouter> get routers => [
         ModularRouter(SplashModule.routeName, module: SplashModule()),
+        ModularRouter(LoginModule.routeName, module: LoginModule()),
         ModularRouter(HomeModule.routeName, module: HomeModule()),
       ];
 }
