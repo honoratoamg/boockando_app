@@ -1,5 +1,7 @@
 import 'package:badges/badges.dart';
+import 'package:boockando_app/app/controllers/app_basket_controller.dart';
 import 'package:boockando_app/app/controllers/app_book_controller.dart';
+import 'package:boockando_app/app/modules/store/page/basket_page.dart';
 import 'package:boockando_app/app/modules/store/widget/book_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,8 @@ class StorePage extends StatefulWidget {
 }
 
 class _StorePageState extends State<StorePage> {
-  final appBookOnlineController = Modular.get<AppBookController>();
+  final appBookController = Modular.get<AppBookController>();
+  final appBasketController = Modular.get<AppBasketController>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,10 @@ class _StorePageState extends State<StorePage> {
               child: SizedBox(
                   height: 200,
                   child: Consumer<AppBookController>(builder: (context, value) {
-                    return appBookOnlineController.books != null
+                    return appBookController.books != null
                         ? StaggeredGridView.countBuilder(
                             crossAxisCount: 4,
-                            itemCount: appBookOnlineController.books.length,
+                            itemCount: appBookController.books.length,
                             itemBuilder: (BuildContext context, int index) =>
                                 BookWidget(
                               index: index,
@@ -49,8 +52,13 @@ class _StorePageState extends State<StorePage> {
         ),
         floatingActionButton: FloatingActionButton.extended(
           icon: Icon(Icons.shopping_basket),
-          label: basketBadge(context, 2),
-          onPressed: () {},
+          label: Consumer<AppBasketController>(builder: (context, value) {
+            return basketBadge(
+                context, appBasketController.amountBooks.value);
+          }),
+          onPressed: () {
+            Navigator.pushNamed(context, BasketPage.routeName);
+          },
         ),
       ),
     );

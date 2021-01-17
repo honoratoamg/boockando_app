@@ -1,16 +1,10 @@
 {
   "users": [
     {
-      "id": 5,
-      "name": "elizabeth",
-      "password": "test",
-      "email": "email@test.com"
-    },
-    {
-      "id": 6,
-      "name": "lena",
+      "id": 7,
+      "name": "ana",
       "password": "123",
-      "email": "lena@email.com"
+      "email": "ana@ana.com"
     }
   ],
   "baskets": [],

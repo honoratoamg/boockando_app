@@ -12,7 +12,7 @@ class BasketBooksDao {
 
       await db.insert(
         TABLE_BASKET_BOOKS_NAME,
-        basketBooks.toMap(),
+        basketBooks.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (ex) {
@@ -26,11 +26,11 @@ class BasketBooksDao {
 
     await db.update(
       TABLE_BASKET_BOOKS_NAME,
-      basketBooks.toMap(),
+      basketBooks.toJson(),
       where: "${TABLE_BASKET_BOOKS_ATT_ID_USER} = ? and "
           "${TABLE_BASKET_BOOKS_ATT_ID_BOOK} = ? and"
           " ${TABLE_BASKET_BOOKS_ATT_ID_BASKET} = ?",
-      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.id],
+      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.basketId],
     );
   }
 
@@ -43,7 +43,7 @@ class BasketBooksDao {
       where: "${TABLE_BASKET_BOOKS_ATT_ID_USER} = ? and "
           "${TABLE_BASKET_BOOKS_ATT_ID_BOOK} = ? and"
           " ${TABLE_BASKET_BOOKS_ATT_ID_BASKET} = ?",
-      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.id],
+      whereArgs: [basketBooks.userId, basketBooks.bookId, basketBooks.basketId],
     );
   }
 
@@ -59,7 +59,7 @@ class BasketBooksDao {
       for (var i = 0; i < maps.length; i++) {
         if (maps[i][TABLE_BASKET_BOOKS_ATT_ID_USER] == userId &&
             maps[i][TABLE_BASKET_BOOKS_ATT_ID_BASKET] == basketId) {
-          userBasketBooks.add(BasketBooks.fromMap(map: maps[i]));
+          userBasketBooks.add(BasketBooks.fromJson(map: maps[i]));
         }
       }
       return userBasketBooks;

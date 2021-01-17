@@ -1,3 +1,4 @@
+import 'package:boockando_app/app/controllers/app_basket_controller.dart';
 import 'package:boockando_app/app/controllers/app_user_controller.dart';
 import 'package:boockando_app/app/data/online/user_online_dao.dart';
 import 'package:boockando_app/app/models/user.dart';
@@ -19,6 +20,7 @@ class _State extends State<LoginPage> {
   final loginController = Modular.get<LoginController>();
   final userController = Modular.get<AppUserController>();
   final userOnlineDao = Modular.get<UserOnlineDao>();
+  final basketController = Modular.get<AppBasketController>();
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -115,8 +117,14 @@ class _State extends State<LoginPage> {
                       //Initialize the memory list value
                       await userController.initializeUser(user);
 
+                      //Initialize user basket loggedUser on memory
+                      basketController.initializeUserBasketFromShared();
+
                       //Save loggedUser on Shared
                       userController.spSaveLoggedUser(user);
+
+                      //Create a user basket on Shared
+                      basketController.createUserBasketOnShared();
 
                       await Modular.to.pushNamed(HomeModule.routeName);
                     }

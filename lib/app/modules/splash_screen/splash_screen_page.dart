@@ -1,13 +1,14 @@
 import 'dart:async';
+import 'package:boockando_app/app/controllers/app_basket_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:boockando_app/app/controllers/app_book_controller.dart';
 import 'package:boockando_app/app/controllers/app_user_controller.dart';
 import 'package:boockando_app/app/models/user.dart';
 import 'package:boockando_app/app/modules/home/home_module.dart';
 import 'package:boockando_app/app/modules/login/login_module.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -55,18 +56,29 @@ class _SplashPageState extends State<SplashPage> {
   Future runInitTasks(BuildContext context) async {
     final bookController = Modular.get<AppBookController>();
     final userController = Modular.get<AppUserController>();
+    final basketController = Modular.get<AppBasketController>();
 
-    await bookController.initializeBooks();
+    //Books - Initialize Books
 
+    // If user has connection
+    await bookController.initializeBooksfromJson();
+    // If user hasn't connection
+    //await bookController.initializeBooksfromLocal();
+    //bookController.hasInternet = false;
+
+    //User - Get logged user from cache
     User user;
-
-    await userController
-        .spGetLoggedUser()
-        .then((value) => user = value);
+    await userController.spGetLoggedUser().then((value) => user = value);
 
     if (user != null) {
-      //Initialize the memory list value
+      //Set loggedUser on memory
       userController.setUser(user);
+
+      //Initialize user basket loggedUser on memory
+      basketController.initializeUserBasketFromShared();
+
+      //Todo get preferences  from Shared
+      //Todo get purchases from json or DB
 
       await Modular.to.pushNamed(HomeModule.routeName);
     } else {

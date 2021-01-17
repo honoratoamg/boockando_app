@@ -1,6 +1,7 @@
 import 'package:boockando_app/app/models/book.dart';
 import 'package:boockando_app/app/repositories/local/database/db_consts.dart';
 import 'package:boockando_app/app/repositories/local/database/db_helper.dart';
+import 'package:boockando_app/app/repositories/local/database/db_queries.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:flutter/widgets.dart';
 
@@ -71,6 +72,16 @@ class BookDao {
       );
     } catch (ex) {
       return <Book>[];
+    }
+  }
+
+  Future<void> dropAndCreateBooks() async {
+    try {
+      final db = await DbHelper.getDatabase();
+      await db.execute("DROP TABLE IF EXISTS ${TABLE_BOOK_NAME}");
+      await db.execute(SCRIPT_CREATE_TABLE_BOOK_SQL);
+    } catch (ex) {
+      debugPrint("DBEXCEPTION: ${ex}");
     }
   }
 }

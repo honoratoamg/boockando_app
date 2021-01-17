@@ -38,7 +38,8 @@ class UserOnlineDao {
 
   /// GET a user from the json-server a user with id
   Future<User> getUserIdByName(userName, userPassword) async {
-    final response = await server.get("$URL_USER?name=${userName}&password=${userPassword}");
+    final response =
+        await server.get("$URL_USER?name=${userName}&password=${userPassword}");
 
     if (response.statusCode == 200) {
       //200 OK response
@@ -46,7 +47,7 @@ class UserOnlineDao {
       final jsonResponse = jsonDecode(response.body);
 
       // A empty response
-      if(jsonResponse.toString() == '[]'){
+      if (jsonResponse.toString() == '[]') {
         return null;
       }
 

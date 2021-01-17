@@ -1,3 +1,4 @@
+import 'package:boockando_app/app/modules/store/page/basket_page.dart';
 import 'package:boockando_app/app/modules/store/page/book_page.dart';
 import 'package:boockando_app/app/modules/store/store_controller.dart';
 import 'package:boockando_app/app/modules/store/store_page.dart';
@@ -24,6 +25,11 @@ class StoreModule extends ChildModule {
       ),
       transition: TransitionType.fadeIn,
     ),
+    ModularRouter(
+      BasketPage.routeName,
+      child: (_, args) => BasketPage(),
+      transition: TransitionType.fadeIn,
+    )
   ];
 
   static const routeName = '/store';

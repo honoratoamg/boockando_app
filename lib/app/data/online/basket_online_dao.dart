@@ -6,28 +6,9 @@ import 'package:boockando_app/app/models/user.dart';
 import 'package:http/http.dart' as server;
 
 class BasketOnlineDao {
-  /// POST a user basket to the json-server
-  Future<int> postBasketUser(User user, Basket basket) async {
-    final headers = <String, String>{
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-    };
-
-    final jsonBasket = <String, dynamic>{};
-    jsonBasket['finalValue'] = basket.totalValue;
-    jsonBasket['userId'] = user.id;
-    jsonBasket['basketBooks'] = [];
-
-    final body = jsonEncode(jsonBasket);
-    final response =
-        await server.post(URL_BASKET, body: body, headers: headers);
-    final jsonResponse = jsonDecode(response.body);
-
-    return jsonResponse['idBasket'];
-  }
 
   /// GET a basket from the json-server
-  Future<Basket> getUserBasket(basketId) async {
+  Future<Basket> getBasketById(basketId) async {
     final response = await server.get("$URL_USER/$basketId");
 
     if (response.statusCode == 200) {
@@ -74,5 +55,25 @@ class BasketOnlineDao {
       // 200 Fail response
       throw Exception('Failed to delete a basket');
     }
+  }
+
+  /// POST a user basket to the json-server
+  Future<int> postBasketUser(User user, Basket basket) async {
+    final headers = <String, String>{
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    final jsonBasket = <String, dynamic>{};
+    jsonBasket['finalValue'] = basket.totalValue;
+    jsonBasket['userId'] = user.id;
+    jsonBasket['basketBooks'] = [];
+
+    final body = jsonEncode(jsonBasket);
+    final response =
+    await server.post(URL_BASKET, body: body, headers: headers);
+    final jsonResponse = jsonDecode(response.body);
+
+    return jsonResponse['idBasket'];
   }
 }

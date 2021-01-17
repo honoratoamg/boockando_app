@@ -11,6 +11,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'app_controller.dart';
 import 'app_widget.dart';
 import 'controllers/app_user_controller.dart';
+import 'data/local/book_dao.dart';
 import 'data/online/basket_online_dao.dart';
 import 'data/online/book_online_dao.dart';
 import 'modules/home/home_module.dart';
@@ -26,6 +27,7 @@ class AppModule extends MainModule {
         Bind((i) => AppBasketController()),
         Bind((i) => UserOnlineDao()),
         Bind((i) => BookOnlineDao()),
+        Bind((i) => BookDao()),
         Bind((i) => BasketOnlineDao()),
       ];
 

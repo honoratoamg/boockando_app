@@ -38,9 +38,6 @@ class AppUserController extends ChangeNotifier {
     // Add the user on memory
     loggedUser = user;
 
-    //TODO Adicionar no database local
-    //TODO Adicionar no Shared Prefs
-
     notifyListeners();
   }
 
@@ -52,7 +49,7 @@ class AppUserController extends ChangeNotifier {
     notifyListeners();
   }
 
-  userLogout(User user){
+  userLogout(User user) {
     spRemoveUser(user.name);
     loggedUser = null;
     Modular.to.pushReplacementNamed(LoginModule.routeName);
