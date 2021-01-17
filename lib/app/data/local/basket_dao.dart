@@ -1,4 +1,4 @@
-import 'package:boockando_app/app/models/Basket.dart';
+import 'package:boockando_app/app/models/basket.dart';
 import 'package:boockando_app/app/models/user.dart';
 import 'package:boockando_app/app/repositories/local/database/db_consts.dart';
 import 'package:boockando_app/app/repositories/local/database/db_helper.dart';
@@ -29,7 +29,7 @@ class BasketDao {
       TABLE_BASKET_NAME,
       basket.toJson(),
       where: "id = ?",
-      whereArgs: [basket.basketId],
+      whereArgs: [basket.id],
     );
   }
 

@@ -21,7 +21,7 @@ class BasketBooksDao {
   }
 
   /// Update a basketBooks
-  Future<void> updateJob(BasketBooks basketBooks) async {
+  Future<void> updateBasketBooks(BasketBooks basketBooks) async {
     final db = await DbHelper.getDatabase();
 
     await db.update(

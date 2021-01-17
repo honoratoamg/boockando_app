@@ -5,6 +5,18 @@
       "name": "ana",
       "password": "123",
       "email": "ana@ana.com"
+    },
+    {
+      "id": 8,
+      "name": "lena",
+      "password": "123",
+      "email": "lena@email.com"
+    },
+    {
+      "id": 9,
+      "name": "bia",
+      "password": "123",
+      "email": "bia@bia.com"
     }
   ],
   "baskets": [],
@@ -12,33 +24,153 @@
   "books": [
     {
       "id": 1,
-      "title": "Unlocking Android",
+      "title": "Book 1 - One",
       "price": 60.5,
-      "isbn": "1933988673",
+      "isbn": "9999999999",
       "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
-      "about": "A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools.",
-      "author": "W. Frank Ableson",
-      "category": "Mobile"
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 1 - Author",
+      "category": "Classics"
     },
     {
       "id": 2,
-      "title": "Android in Action, Second Edition",
-      "price": 100.5,
-      "isbn": "1935182722",
-      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson2.jpg",
-      "about": "A Developer's Guide provides concise, hands-on instruction for the Android operating system and development tools.",
-      "author": "W. Frank Ableson",
-      "category": "Java"
+      "title": "Book 2 - Two",
+      "price": 45.0,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 2 - Author",
+      "category": "Fantasy"
     },
     {
       "id": 3,
-      "title": "Specification by Example",
-      "price": 50.5,
-      "isbn": "1617290084",
-      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/adzic.jpg",
-      "about": "A book about Software Engineering.",
-      "author": "Gojko Adzic",
-      "category": "Software Engineering"
+      "title": "Book 3 - Three",
+      "price": 30.0,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 3 - Author",
+      "category": "Horror"
+    },
+    {
+      "id": 4,
+      "title": "Book 4 - Four",
+      "price": 70.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 4 - Author",
+      "category": "Classics"
+    },
+    {
+      "id": 5,
+      "title": "Book 5 - Five",
+      "price": 120.2,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 5 - Author",
+      "category": "Fantasy"
+    },
+    {
+      "id": 6,
+      "title": "Book 6 - Six",
+      "price": 60.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 6 - Author",
+      "category": "Horror"
+    },
+    {
+      "id": 7,
+      "title": "Book 7 - Seven",
+      "price": 10.0,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 7 - Author",
+      "category": "Literary Fiction"
+    },
+    {
+      "id": 8,
+      "title": "Book 8 - Eight",
+      "price": 50.0,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 8 - Author",
+      "category": "Fantasy"
+    },
+    {
+      "id": 9,
+      "title": "Book 9 - Nine",
+      "price": 70.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 9 - Author",
+      "category": "Classics"
+    },
+    {
+      "id": 10,
+      "title": "Book 10 - Ten",
+      "price": 326.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 10 - Author",
+      "category": "Literary Fiction"
+    },
+    {
+      "id": 11,
+      "title": "Book 11 - Eleven",
+      "price": 80.2,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 11 - Author",
+      "category": "Literary Fiction"
+    },
+    {
+      "id": 12,
+      "title": "Book 12 - Twelve",
+      "price": 225.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 12 - Author",
+      "category": "Classics"
+    },
+    {
+      "id": 13,
+      "title": "Book 13 - Thirteen",
+      "price": 500.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 13 - Author",
+      "category": "Literary Fiction"
+    },
+    {
+      "id": 14,
+      "title": "Book 14 - Fourteen",
+      "price": 38.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 14 - Author",
+      "category": "Literary Fiction"
+    },
+    {
+      "id": 15,
+      "title": "Book 15 - Fifteen",
+      "price": 323.5,
+      "isbn": "9999999999",
+      "bookImage": "https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/ableson.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam magna erat, commodo quis vehicula sit amet, fringilla hendrerit sem. Maecenas nec orci maximus, blandit dolor quis, lacinia nibh. Integer placerat erat ut metus rhoncus convallis. Integer facilisis ornare dui, non dignissim erat malesuada eleifend. Maecenas dignissim fringilla est, ut rhoncus nibh fringilla at. Praesent in quam maximus, fermentum augue eget, sodales mauris. Aenean venenatis dapibus augue tincidunt fermentum. Nullam id tempor enim.",
+      "author": "Book 15 - Author",
+      "category": "Horror"
     }
   ]
 }

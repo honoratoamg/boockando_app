@@ -39,6 +39,7 @@ const TABLE_BASKET_BOOKS_ATT_BOOK_QTD = "bookQTD";
 const TABLE_BASKET_BOOKS_ATT_BOOK_PRICE = "bookPrice";
 
 //Purchase
+const TABLE_PURCHASE_ATT_ID = "id"; //PK
 const TABLE_PURCHASE_ATT_BASKET_ID = "basketId"; //FK
 const TABLE_PURCHASE_ATT_USER_ID = "userId"; //FK
 const TABLE_PURCHASE_ATT_IS_DELETED = "isDeleted";

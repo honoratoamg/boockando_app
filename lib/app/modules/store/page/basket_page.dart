@@ -22,7 +22,7 @@ class _BasketPageState extends State<BasketPage> {
         valueListenable: basketController.totalValue,
         builder: (context, value, child) {
           return Text(
-              "My Basket's Total: R\$ ${basketController.totalValue.value}");
+              "Basket's Total: R\$ ${basketController.totalValue.value}");
         },
       )),
       body: Padding(
@@ -43,14 +43,21 @@ class _BasketPageState extends State<BasketPage> {
                               itemCount:
                                   basketController.userBasketBooks.length,
                               itemBuilder: (BuildContext context, int index) =>
-                                  BookBasketWidget(key: UniqueKey(),index: index),
+                                  BookBasketWidget(
+                                      key: UniqueKey(), index: index),
                             ),
                           ),
                         )
                       : CircularProgressIndicator();
                 }),
-                RaisedButton(child: Text('Buy now'),
-                    onPressed: (){}),
+                RaisedButton(
+                    child: Text('Buy now'),
+                    onPressed: () {
+                      /// Todo: Só é ativo se tiver internet
+                      basketController.finishPurchase();
+
+                      /// Todo: Limpar carrinho do Shared
+                    }),
               ]),
         ),
       ),

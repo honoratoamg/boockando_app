@@ -118,15 +118,15 @@ class _State extends State<LoginPage> {
                       await userController.initializeUser(user);
 
                       //Initialize user basket loggedUser on memory
-                      basketController.initializeUserBasketFromShared();
+                      basketController.initializeUserBasket();
 
                       //Save loggedUser on Shared
                       userController.spSaveLoggedUser(user);
 
-                      //Create a user basket on Shared
-                      basketController.createUserBasketOnShared();
+                      basketController.initializeUserBasket();
 
-                      await Modular.to.pushNamed(HomeModule.routeName);
+                      await Modular.to
+                          .pushReplacementNamed(HomeModule.routeName);
                     }
                   },
                 ),

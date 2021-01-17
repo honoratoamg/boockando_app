@@ -59,16 +59,12 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.menu_book_outlined,
-                          size: 30, color: Colors.teal),
                       Flexible(
                         child: TextFormField(
                           controller: nameController,
                           readOnly: true,
                           decoration: InputDecoration(
-                              isDense: true,
-                              border: InputBorder.none,
-                              hintText: "Book's Title"),
+                              isDense: true, border: InputBorder.none),
                         ),
                       )
                     ],
@@ -81,9 +77,7 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
                         controller: numberController,
                         readOnly: true,
                         decoration: InputDecoration(
-                            isDense: true,
-                            border: InputBorder.none,
-                            hintText: "Book's Price"),
+                            isDense: true, border: InputBorder.none),
                       ))
                     ],
                   ),

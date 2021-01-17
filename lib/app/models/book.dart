@@ -24,7 +24,7 @@ class Book {
     return Book(
         id: map['id'],
         title: map['title'].toString(),
-        price: map['price'],
+        price: map['price'].toDouble(),
         author: map['author'].toString(),
         about: map['about'].toString(),
         isbn: map['isbn'].toString(),

@@ -1,8 +1,15 @@
 import 'package:flutter/cupertino.dart';
 
 class Purchase {
-  Purchase({this.basketId, this.userId, this.day, this.month, this.isDeleted});
+  Purchase(
+      {this.id,
+      this.basketId,
+      this.userId,
+      this.day,
+      this.month,
+      this.isDeleted});
 
+  int id;
   int basketId;
   int userId;
   String day;
@@ -11,6 +18,7 @@ class Purchase {
 
   factory Purchase.fromJson({Map<String, dynamic> map}) {
     return Purchase(
+        id: map['id'],
         basketId: map['basketId'],
         day: map['day'].toString(),
         userId: map['userId'],
@@ -20,16 +28,17 @@ class Purchase {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
+    data['id'] = id;
     data['basketId'] = basketId;
     data['userId'] = userId;
     data['day'] = day;
     data['month'] = month;
     data['isDeleted'] = isDeleted;
-
     return data;
   }
 
   setValues({@required Purchase inputPurchase}) {
+    id = inputPurchase.id;
     basketId = inputPurchase.basketId;
     userId = inputPurchase.userId;
     day = inputPurchase.day;

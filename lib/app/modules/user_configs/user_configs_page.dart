@@ -35,7 +35,7 @@ Widget UserLogout(BuildContext context) {
     child: Padding(
       padding: const EdgeInsets.all(5.0),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           userController.userLogout(userController.loggedUser);
         },
         child: Container(

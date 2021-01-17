@@ -75,12 +75,12 @@ class _SplashPageState extends State<SplashPage> {
       userController.setUser(user);
 
       //Initialize user basket loggedUser on memory
-      basketController.initializeUserBasketFromShared();
+      basketController.initializeUserBasket();
 
       //Todo get preferences  from Shared
       //Todo get purchases from json or DB
 
-      await Modular.to.pushNamed(HomeModule.routeName);
+      await Modular.to.pushReplacementNamed(HomeModule.routeName);
     } else {
       await Modular.to.pushReplacementNamed(LoginModule.routeName);
     }
