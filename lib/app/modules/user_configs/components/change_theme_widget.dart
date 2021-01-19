@@ -1,4 +1,6 @@
 import 'package:boockando_app/app/controllers/app_user_configs_controller.dart';
+import 'package:boockando_app/app/controllers/app_user_controller.dart';
+import 'package:boockando_app/app/repositories/local/shared_prefs/shared_prefs.dart';
 import 'package:boockando_app/app/repositories/shared/themes/app_themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +59,8 @@ class LightDarkThemeDropDownButtonState
 
   @override
   Widget build(BuildContext context) {
+    final appUserController = Modular.get<AppUserController>();
+
     return DropdownButton<String>(
       value: dropdownValue,
       icon: Icon(Icons.more_vert),
@@ -65,26 +69,34 @@ class LightDarkThemeDropDownButtonState
       underline: Container(
         height: 2,
       ),
-      onChanged: (String newValue) {
-        setState(() {
-          dropdownValue = newValue;
-          AppThemesEnum theme;
-          switch (newValue) {
-            case 'System':
-              theme = AppThemesEnum.system;
-              break;
-            case 'Dark Theme':
-              theme = AppThemesEnum.darkTheme;
-              break;
-            case 'High Contrast':
-              theme = AppThemesEnum.highContrast;
-              break;
-            default:
-              theme = AppThemesEnum.lightTheme;
-              break;
-          }
-          settings.changeTheme(theme: theme, context: context);
-        });
+      onChanged: (String newValue) async {
+        dropdownValue = newValue;
+        AppThemesEnum theme;
+        switch (newValue) {
+          case 'System':
+            theme = AppThemesEnum.system;
+            await SharedPrefs.save(
+                "User[${appUserController.loggedUser.id}][Theme]", "system");
+            break;
+          case 'Dark Theme':
+            theme = AppThemesEnum.darkTheme;
+            await SharedPrefs.save(
+                "User[${appUserController.loggedUser.id}][Theme]", "darkTheme");
+            break;
+          case 'High Contrast':
+            theme = AppThemesEnum.highContrast;
+            await SharedPrefs.save(
+                "User[${appUserController.loggedUser.id}][Theme]",
+                "highContrast");
+            break;
+          default:
+            theme = AppThemesEnum.lightTheme;
+            await SharedPrefs.save(
+                "User[${appUserController.loggedUser.id}][Theme]",
+                "lightTheme");
+            break;
+        }
+        settings.changeTheme(theme: theme, context: context);
       },
       items: values.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

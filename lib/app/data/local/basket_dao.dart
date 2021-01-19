@@ -1,5 +1,5 @@
 import 'package:boockando_app/app/models/basket.dart';
-import 'package:boockando_app/app/models/user.dart';
+import 'package:boockando_app/app/models/basket_books.dart';
 import 'package:boockando_app/app/repositories/local/database/db_consts.dart';
 import 'package:boockando_app/app/repositories/local/database/db_helper.dart';
 import 'package:sqflite/sqflite.dart';
@@ -62,7 +62,7 @@ class BasketDao {
   }
 
   /// returns a Basket by Id
-  Future<User> getBasketById(int basketId) async {
+  Future<Basket> getBasketById(int basketId) async {
     try {
       final db = await DbHelper.getDatabase();
 
@@ -70,7 +70,7 @@ class BasketDao {
           .rawQuery("SELECT * FROM '$TABLE_USER_NAME' WHERE id = '$basketId'");
 
       if (result.isNotEmpty) {
-        return User.fromJson(map: result.first);
+        return Basket.fromJson(map: result.first);
       }
 
       return null;
@@ -79,4 +79,25 @@ class BasketDao {
       return null;
     }
   }
+
+  /// Returns a list of BasketBooks of a user
+  Future<List<BasketBooks>> getBasketItemsByBasketId(int basketId) async {
+    try {
+      final db = await DbHelper.getDatabase();
+      final maps = await db.query(TABLE_BASKET_BOOKS_NAME);
+
+      final basketBooks = <BasketBooks>[];
+
+      for (var i = 0; i < maps.length; i++) {
+        if (maps[i][TABLE_BASKET_BOOKS_ATT_ID_BASKET] == basketId) {
+          basketBooks.add(BasketBooks.fromJson(map: maps[i]));
+          }
+
+      }
+      return basketBooks;
+    } catch (ex) {
+      return <BasketBooks>[];
+    }
+  }
+
 }

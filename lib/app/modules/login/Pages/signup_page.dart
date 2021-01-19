@@ -1,9 +1,10 @@
 import 'package:boockando_app/app/controllers/app_user_controller.dart';
-import 'package:boockando_app/app/models/user.dart';
 import 'package:boockando_app/app/repositories/shared/utils/validator_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../login_controller.dart';
 
 class SignUpPage extends StatefulWidget {
   static const routeName = "/signin";
@@ -12,20 +13,15 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _State extends State<SignUpPage> {
+  AutovalidateMode isValidating = AutovalidateMode.disabled;
+  final controller = Modular.get<LoginController>();
   final userController = Modular.get<AppUserController>();
   final _formKey = GlobalKey<FormState>();
-  String userName, password, email;
-
-  AutovalidateMode isValidating = AutovalidateMode.disabled;
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
 
   @override
-  void dispose() {
-    super.dispose();
-    passwordController.dispose();
-    nameController.dispose();
+  void initState() {
+    super.initState();
+    controller.initializeFieldsOfLoggedUser();
   }
 
   @override
@@ -45,16 +41,14 @@ class _State extends State<SignUpPage> {
                   alignment: Alignment.topLeft,
                   padding: EdgeInsets.all(10),
                   child: Center(
-                    child: Text(
-                      'Sign in user',
-                    ),
+                    child: (userController.loggedUser == null)
+                        ? Text('Sign in user')
+                        : Text('Edit your account'),
                   )),
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
-                  controller: nameController,
-                  onChanged: (valor) =>
-                      setState(() => userName = valor.trim().toLowerCase()),
+                  controller: controller.nameSgnController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Username',
@@ -71,11 +65,10 @@ class _State extends State<SignUpPage> {
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
-                  controller: passwordController,
+                  controller: controller.passwordSgnController,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
-                  onChanged: (valor) => setState(() => password = valor),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
@@ -92,8 +85,7 @@ class _State extends State<SignUpPage> {
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextFormField(
-                  controller: emailController,
-                  onChanged: (valor) => setState(() => email = valor),
+                  controller: controller.emailSgnController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
@@ -114,18 +106,13 @@ class _State extends State<SignUpPage> {
                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: RaisedButton(
                   textColor: Colors.black,
-                  child: Text('Sign in'),
-                  onPressed: () {
+                  child: (userController.loggedUser == null)
+                      ? Text('Sign in')
+                      : Text('Confirm'),
+                  onPressed: () async {
                     isValidating = AutovalidateMode.always;
                     if (_formKey.currentState.validate()) {
-                      final user = User(
-                        name: userName,
-                        password: password,
-                        email: email,
-                      );
-
-                      userController.addUser(user);
-                      Modular.to.pop();
+                      controller.userSignOrUpdate(context);
                     }
                   },
                 ),

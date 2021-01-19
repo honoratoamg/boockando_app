@@ -20,30 +20,11 @@ class PurchaseOnlineDao {
   }
 
   /// GET all purchases from json-server
-  Future<List<Purchase>> getPurchases() async {
-    final response = await server.get(URL_PURCHASE);
-
+  Future<List<Purchase>> getAllUserPurchases(int userId) async {
+    final response =
+        await server.get("$URL_PURCHASE?userId=${userId}&isDeleted=0");
     //200 OK response
     if (response.statusCode == 200) {
-      final jsonResponse = jsonDecode(response.body);
-      final purchases = (jsonResponse as List)
-          .map((data) => Purchase.fromJson(map: data))
-          .toList();
-      return purchases;
-    } else {
-      // 200 Fail response
-      throw Exception('Failed to get all purchases');
-    }
-  }
-
-  /// GET a purchase from the json-server a purchase with id
-  Future<Purchase> getPurchaseIdByBasketAndUser(userId, basketId) async {
-    final response =
-        await server.get("$URL_PURCHASE?UserId=${userId}&basketId=${basketId}");
-
-    if (response.statusCode == 200) {
-      //200 OK response
-
       final jsonResponse = jsonDecode(response.body);
 
       // A empty response
@@ -51,10 +32,13 @@ class PurchaseOnlineDao {
         return null;
       }
 
-      return Purchase.fromJson(map: jsonResponse[0]);
+      final purchases = (jsonResponse as List)
+          .map((data) => Purchase.fromJson(map: data))
+          .toList();
+      return purchases;
     } else {
       // 200 Fail response
-      throw Exception('Failed to load the purchase');
+      throw Exception('Failed to get all purchases');
     }
   }
 

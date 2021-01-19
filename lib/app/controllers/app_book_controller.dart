@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:boockando_app/app/data/local/book_dao.dart';
@@ -10,9 +12,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 class AppBookController extends ChangeNotifier {
   final bookOnlineDao = Modular.get<BookOnlineDao>();
   final bookDao = Modular.get<BookDao>();
+
+  var layoutDesign = StaggeredTile.count(2, 3);
+  String selectedCategory;
   bool hasInternet = true;
   List<Book> books;
 
+  /// Initialize books from Json-server and add cache to local database
   initializeBooksfromJson() async {
     final appController = Modular.get<AppBookController>();
     await bookOnlineDao
@@ -22,6 +28,7 @@ class AppBookController extends ChangeNotifier {
     addBooksOnDb();
   }
 
+  /// Initialize books from local
   initializeBooksfromLocal() async {
     final appController = Modular.get<AppBookController>();
     await bookDao.getBooks().then((value) => appController.setBooks(value));
@@ -49,25 +56,18 @@ class AppBookController extends ChangeNotifier {
     return -1;
   }
 
-  Book getBookById(int bookId) {
+  Book getBookOnMemoryById(int bookId) {
     for (var i = 0; i < books.length; i++) {
       if (books[i].id == bookId) {
-        return books[i];
+          return books[i];
+        }
       }
-    }
     return null;
   }
 
   addBook(Book book) async {
     await bookOnlineDao.postBook(book: book).then((value) => book.id = value);
     books.add(book);
-
-    notifyListeners();
-  }
-
-  deleteBook(Book book) async {
-    await bookOnlineDao.RemoveBook(idBook: book.id);
-    books.remove(book);
 
     notifyListeners();
   }
@@ -83,6 +83,60 @@ class AppBookController extends ChangeNotifier {
       book.setValues(inputBook: books[i]);
       book.bookImage = base64;
       await bookDao.insertBook(book);
+    }
+  }
+
+  setDesign(var value) {
+    layoutDesign = value;
+    notifyListeners();
+  }
+
+  Future<List<Book>> getBooksByCategory(String category) async {
+    List<Book> books;
+
+    bool isConnectedUser;
+    await InternetConnectionChecker.checkConnection()
+        .then((value) => isConnectedUser = value);
+
+    //Books - Initialize Books by category
+    if (isConnectedUser) {
+      await bookOnlineDao
+          .getBookByCategory(category)
+          .then((value) => books = value);
+      hasInternet = true;
+    } else {
+      await bookDao.getBooksByCategory(category).then((value) => books = value);
+      hasInternet = false;
+    }
+
+    return books;
+  }
+
+  Future<Book> getBookById(int bookId) async {
+    Book book;
+    bool isConnectedUser;
+    await InternetConnectionChecker.checkConnection()
+        .then((value) => isConnectedUser = value);
+
+    if (isConnectedUser) {
+      await bookOnlineDao
+          .getBook(bookId: bookId)
+          .then((value) => book = value);
+    } else {
+      await bookDao.getBook(bookId).then((value) => book = value);
+    }
+    return book;
+  }
+
+  checkConnection() async {
+    bool isConnectedUser;
+    await InternetConnectionChecker.checkConnection()
+        .then((value) => isConnectedUser = value);
+
+    if (isConnectedUser) {
+      hasInternet = true;
+    } else {
+      hasInternet = false;
     }
   }
 }

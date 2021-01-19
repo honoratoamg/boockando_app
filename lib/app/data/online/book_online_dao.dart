@@ -68,21 +68,33 @@ class BookOnlineDao {
     }
   }
 
-  /// Delete a book from json-server
-  Future<server.Response> RemoveBook({int idBook}) async {
-    final response = await server.delete(
-      '$URL_BOOK/$idBook',
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
+  Future<List<Book>> getBookByCategory(String category) async {
+    String UrlBookCategory;
 
-    // 200 Ok response
+    if (category != 'All books') {
+      UrlBookCategory = "$URL_BOOK?category=${category}";
+    } else {
+      UrlBookCategory = URL_BOOK;
+    }
+
+    final response = await server.get(UrlBookCategory);
+    //200 OK response
     if (response.statusCode == 200) {
-      return response;
+      final jsonResponse = jsonDecode(response.body);
+
+      // A empty response
+      if (jsonResponse.toString() == '[]') {
+        return null;
+      }
+
+      final books = (jsonResponse as List)
+          .map((data) => Book.fromJson(map: data))
+          .toList();
+
+      return books;
     } else {
       // 200 Fail response
-      throw Exception('Failed to delete a book');
+      throw Exception('Failed to get all filtered books');
     }
   }
 }

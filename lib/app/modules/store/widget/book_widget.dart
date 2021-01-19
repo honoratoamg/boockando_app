@@ -10,8 +10,9 @@ import 'package:boockando_app/app/models/book.dart';
 import 'package:boockando_app/app/modules/store/page/book_page.dart';
 
 class BookWidget extends StatefulWidget {
-  BookWidget({this.index});
+  const BookWidget({Key key, this.index, this.book}) : super(key: key);
   final int index;
+  final book;
 
   @override
   _BookWidgetState createState() => _BookWidgetState();
@@ -22,6 +23,7 @@ class _BookWidgetState extends State<BookWidget> implements Disposable {
   final appBasketOnlineController = Modular.get<AppBasketController>();
   TextEditingController nameController = TextEditingController();
   TextEditingController priceController = TextEditingController();
+  Book tempBook;
   var base64;
 
   @override
@@ -33,10 +35,12 @@ class _BookWidgetState extends State<BookWidget> implements Disposable {
   @override
   void initState() {
     super.initState();
-    nameController.text = appBookOnlineController.books[widget.index].title;
-    if (!appBookOnlineController.hasInternet) {
-      base64 =
-          base64Decode(appBookOnlineController.books[widget.index].bookImage);
+    tempBook = widget.book;
+    nameController.text = tempBook.title;
+
+    //If not has internet then apply decode
+    if (appBookOnlineController.hasInternet == false) {
+      base64 = base64Decode(tempBook.bookImage);
     }
   }
 
@@ -56,28 +60,28 @@ class _BookWidgetState extends State<BookWidget> implements Disposable {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: imageOfBook(
-                    appBookOnlineController.books[widget.index], base64),
+                child: imageOfBook(tempBook, base64),
               ),
-              TextFormField(
-                decoration: InputDecoration(
-                    isDense: true,
-                    border: InputBorder.none,
-                    hintText: "Book's Title"),
-                minLines: 1,
-                controller: nameController,
-                readOnly: true,
+              Center(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      isDense: true,
+                      border: InputBorder.none,
+                      hintText: "Book's Title"),
+                  minLines: 1,
+                  textAlign: TextAlign.center,
+                  controller: nameController,
+                  readOnly: true,
+                ),
               ),
-              Text(
-                  'R\$: ${appBookOnlineController.books[widget.index].price.toString()}'),
+              Text('R\$: ${tempBook.price.toString()}'),
               FlatButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                     side: BorderSide(color: Colors.red)),
                 padding: EdgeInsets.all(5.0),
                 onPressed: () {
-                  appBasketOnlineController.basketAddBook(
-                      appBookOnlineController.books[widget.index]);
+                  appBasketOnlineController.basketAddBook(tempBook);
                 },
                 child: Text(
                   "Add to Basket".toUpperCase(),

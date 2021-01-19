@@ -19,6 +19,8 @@ import 'data/online/basket_online_dao.dart';
 import 'data/online/book_online_dao.dart';
 import 'data/online/purchase_online_dao.dart';
 import 'modules/home/home_module.dart';
+import 'modules/login/login_controller.dart';
+import 'modules/purchase/purchase_controller.dart';
 
 class AppModule extends MainModule {
   @override
@@ -28,7 +30,9 @@ class AppModule extends MainModule {
         Bind((i) => UserConfigsController()),
         Bind((i) => AppBookController()),
         Bind((i) => AppUserController()),
+        Bind((i) => PurchaseController()),
         Bind((i) => AppBasketController()),
+        Bind((i) => LoginController()),
         Bind((i) => UserOnlineDao()),
         Bind((i) => BookOnlineDao()),
         Bind((i) => PurchaseOnlineDao()),

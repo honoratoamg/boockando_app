@@ -1,3 +1,5 @@
+import 'package:boockando_app/app/modules/home/home_module.dart';
+import 'package:boockando_app/app/modules/home/home_page.dart';
 import 'package:boockando_app/app/modules/store/page/basket_page.dart';
 import 'package:boockando_app/app/modules/store/page/book_page.dart';
 import 'package:boockando_app/app/modules/store/store_controller.dart';
@@ -28,6 +30,11 @@ class StoreModule extends ChildModule {
     ModularRouter(
       BasketPage.routeName,
       child: (_, args) => BasketPage(),
+      transition: TransitionType.fadeIn,
+    ),
+    ModularRouter(
+      HomeModule.routeName,
+      child: (_, args) => HomePage(),
       transition: TransitionType.fadeIn,
     )
   ];

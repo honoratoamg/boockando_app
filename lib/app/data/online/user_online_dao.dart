@@ -58,6 +58,28 @@ class UserOnlineDao {
     }
   }
 
+  /// Verification of a user name
+  Future<User> userVerification(String userName) async {
+    final response =
+    await server.get("$URL_USER?name=${userName}");
+
+    if (response.statusCode == 200) {
+      //200 OK response
+
+      final jsonResponse = jsonDecode(response.body);
+
+      // A empty response
+      if (jsonResponse.toString() == '[]') {
+        return null;
+      }
+
+      return User.fromJson(map: jsonResponse[0]);
+    } else {
+      // 200 Fail response
+      throw Exception('Failed to load the user');
+    }
+  }
+
   /// POST a user to the json-server
   Future<int> postUser({User user}) async {
     final headers = <String, String>{

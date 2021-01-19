@@ -1,8 +1,8 @@
 import 'package:boockando_app/app/controllers/app_user_controller.dart';
+import 'package:boockando_app/app/modules/login/Pages/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
 import 'components/change_theme_widget.dart';
 import 'components/text_size_widget.dart';
 
@@ -20,7 +20,8 @@ class UserConfigsPage extends StatelessWidget {
           children: [
             ChangeThemeWidget(),
             TextSizeWidget(),
-            UserLogout(context),
+            UserSignButton(context),
+            UserLogout(),
           ],
         ),
       ),
@@ -28,7 +29,7 @@ class UserConfigsPage extends StatelessWidget {
   }
 }
 
-Widget UserLogout(BuildContext context) {
+Widget UserLogout() {
   final userController = Modular.get<AppUserController>();
 
   return Card(
@@ -47,6 +48,24 @@ Widget UserLogout(BuildContext context) {
               Icon(Icons.logout),
             ],
           ),
+        ),
+      ),
+    ),
+  );
+}
+
+Widget UserSignButton(BuildContext context) {
+  return Card(
+    child: Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, SignUpPage.routeName);
+        },
+        child: Container(
+          child: Center(
+              child: Text("Update my account",
+                  style: TextStyle(fontWeight: FontWeight.bold))),
         ),
       ),
     ),

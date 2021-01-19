@@ -2,26 +2,24 @@ import 'dart:convert';
 
 import 'package:boockando_app/app/data/local/basket_books_dao.dart';
 import 'package:boockando_app/app/data/local/basket_dao.dart';
-import 'package:boockando_app/app/data/local/purchase_dao.dart';
 import 'package:boockando_app/app/data/online/basket_online_dao.dart';
-import 'package:boockando_app/app/data/online/purchase_online_dao.dart';
 import 'package:boockando_app/app/models/basket.dart';
 import 'package:boockando_app/app/models/basket_books.dart';
 import 'package:boockando_app/app/models/book.dart';
-import 'package:boockando_app/app/models/purchase.dart';
+import 'package:boockando_app/app/modules/purchase/purchase_controller.dart';
 import 'package:boockando_app/app/repositories/local/shared_prefs/shared_prefs.dart';
+import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'app_user_controller.dart';
 
 class AppBasketController extends ChangeNotifier {
-  final appUserController = Modular.get<AppUserController>();
   final basketOnlineDao = Modular.get<BasketOnlineDao>();
   final basketDao = Modular.get<BasketDao>();
   final basketBooksDao = Modular.get<BasketBooksDao>();
-  final purchaseOnlineDao = Modular.get<PurchaseOnlineDao>();
-  final purchaseDao = Modular.get<PurchaseDao>();
+  final appUserController = Modular.get<AppUserController>();
+  final purchaseController = Modular.get<PurchaseController>();
 
   final totalValue = ValueNotifier<double>(0.0);
   final amountBooks = ValueNotifier<int>(0);
@@ -122,9 +120,7 @@ class AppBasketController extends ChangeNotifier {
   finishPurchase() async {
     //Creates a Json Basket
     Basket basket;
-    basket = Basket(
-      totalValue: totalValue.value,
-    );
+    basket = Basket();
 
     //Initialize the basket ID on Json
     await basketOnlineDao.postBasket(basket).then((value) => basket.id = value);
@@ -146,40 +142,10 @@ class AppBasketController extends ChangeNotifier {
     }
 
     //Create a purchase and insert in local database and server-json
-    createPurchase(basket);
+    purchaseController.createPurchase(basket, amountBooks.value.toString(), totalValue.value.toString());
 
     //Clear memory basket
     await clearBasket();
-    notifyListeners();
-  }
-
-  //Create a purchase based on basket
-  createPurchase(Basket basket) async {
-    final userId = appUserController.loggedUser.id;
-    String day;
-    String month;
-
-    //Get day and month
-    day = DateTime.now().day.toString();
-    month = DateTime.now().month.toString();
-
-    //Create a purchase
-    Purchase purchase;
-    purchase = Purchase(
-      basketId: basket.id,
-      userId: userId,
-      day: day,
-      month: month,
-      isDeleted: 0,
-    );
-
-    //Create a purchase then put the id
-    await purchaseOnlineDao
-        .postPurchase(purchase)
-        .then((value) => purchase.id = value);
-
-    //Insert purchase on local DB
-    await purchaseDao.insertPurchase(purchase);
     notifyListeners();
   }
 
@@ -191,5 +157,34 @@ class AppBasketController extends ChangeNotifier {
     totalValue.value = 0.0;
     amountBooks.value = 0;
     notifyListeners();
+  }
+
+  BasketBooks getBasketById(int id) {
+    for (var i = 0; i < userBasketBooks.length; i++) {
+      if (userBasketBooks[i].basketId == id) {
+        return userBasketBooks[i];
+      }
+    }
+    return null;
+  }
+
+  /// Get a basket's items
+  Future<List<BasketBooks>> getBasketItems(int basketId) async {
+    List<BasketBooks> basketBooks;
+
+    bool isConnectedUser;
+    await InternetConnectionChecker.checkConnection()
+        .then((value) => isConnectedUser = value);
+
+    //Books - Initialize Books by category
+    if (isConnectedUser) {
+      await basketOnlineDao
+          .getBasketItemsByBasketId(basketId)
+          .then((value) => basketBooks = value);
+    } else {
+      await basketDao.getBasketItemsByBasketId(basketId).then((value) => basketBooks = value);
+    }
+
+    return basketBooks;
   }
 }

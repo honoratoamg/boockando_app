@@ -1,21 +1,26 @@
 import 'dart:convert';
-import 'package:boockando_app/app/modules/login/login_module.dart';
+import 'package:boockando_app/app/repositories/shared/themes/app_themes.dart';
+import 'package:boockando_app/app/repositories/shared/utils/local_notification_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:boockando_app/app/modules/login/login_controller.dart';
+import 'package:boockando_app/app/modules/login/login_module.dart';
 import 'package:boockando_app/app/data/online/user_online_dao.dart';
 import 'package:boockando_app/app/models/user.dart';
 import 'package:boockando_app/app/repositories/local/shared_prefs/shared_prefs.dart';
+
+import '../app_controller.dart';
+import 'app_user_configs_controller.dart';
 
 class AppUserController extends ChangeNotifier {
   final userOnlineDao = Modular.get<UserOnlineDao>();
   User loggedUser;
 
   initializeUser(User user) async {
-    final appController = Modular.get<AppUserController>();
     await userOnlineDao
         .getUser(userId: user.id)
-        .then((value) => appController.setUser(value));
+        .then((value) => setUser(value));
   }
 
   setUser(User user) {
@@ -35,9 +40,6 @@ class AppUserController extends ChangeNotifier {
     // Add the user on json-server
     await userOnlineDao.postUser(user: user).then((value) => user.id = value);
 
-    // Add the user on memory
-    loggedUser = user;
-
     notifyListeners();
   }
 
@@ -49,38 +51,74 @@ class AppUserController extends ChangeNotifier {
     notifyListeners();
   }
 
-  userLogout(User user) {
+  userLogout(User user) async {
+    final appController = Modular.get<AppController>();
+    final loginController = Modular.get<LoginController>();
+    final userConfigsController = Modular.get<UserConfigsController>();
+
+    await LocalNotificationUtils.showNotification(
+      title: "Thanks for the visit ${user.name}!! :)",
+      body: "Feel free to visit us more often! :)!",
+    );
+
     spRemoveUser(user.name);
     loggedUser = null;
-    Modular.to.pushReplacementNamed(LoginModule.routeName);
+    userConfigsController.fontSize = userConfigsController.defaultFontSize;
+    userConfigsController.userTheme = AppThemesEnum.system;
+    appController.clearAllLists();
+    loginController.clearForms();
+    await Modular.to.pushReplacementNamed(LoginModule.routeName);
+    notifyListeners();
   }
 
-  //SharedPrefs
-
+  /// Save a loggedUser on SharedPrefs
   spSaveLoggedUser(User user) {
     SharedPrefs.save("loggedUser", jsonEncode(user));
   }
 
+  /// Remove a loggedUser on SharedPrefs
   spRemoveUser(String name) {
     SharedPrefs.remove("loggedUser");
   }
 
+  /// Try to get loggedUser from SharedPrefs
   Future<User> spGetLoggedUser() async {
     User user;
     await SharedPrefs.contains("loggedUser").then((value) async {
       if (value) {
-        await SharedPrefs.read("loggedUser").then((value) {
-          //Initialize a user
-          user = User(id: 0, email: "", password: "", name: "");
-
-          //Set values
-          user.setValues(inputUser: User.fromJson(map: jsonDecode(value)));
-          return user;
-        });
+        user = await SharedPrefs.read("loggedUser")
+            .then((value) => User.fromJson(map: jsonDecode(value)));
       } else {
-        return null;
+        user = null;
       }
     });
     return user;
+  }
+
+  updateUserAccount(User user) {
+    updateUser(user);
+    notifyListeners();
+  }
+
+  /// Verification of username. If already exists, return true
+  Future<bool> usernameSignVerification(User user) async {
+    final userController = Modular.get<AppUserController>();
+
+    // Verification
+    User userFounded;
+    await userOnlineDao
+        .userVerification(user.name)
+        .then((value) => userFounded = value);
+
+    //If userFounded is loggedUser
+    if (userFounded?.name == userController?.loggedUser?.name) {
+      return false;
+    }
+
+    if (userFounded != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

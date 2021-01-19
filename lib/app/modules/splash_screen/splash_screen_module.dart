@@ -1,3 +1,4 @@
+import 'package:boockando_app/app/modules/login/Pages/signup_page.dart';
 import 'package:boockando_app/app/modules/splash_screen/splash_screen_controller.dart';
 import 'package:boockando_app/app/modules/splash_screen/splash_screen_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -15,6 +16,11 @@ class SplashModule extends ChildModule {
           child: (_, args) => SplashPage(),
           transition: TransitionType.leftToRightWithFade,
         ),
+      ModularRouter(
+        SignUpPage.routeName,
+        child: (_, args) => SignUpPage(),
+        transition: TransitionType.fadeIn,
+      )
       ];
 
   static const routeName = '/splash';

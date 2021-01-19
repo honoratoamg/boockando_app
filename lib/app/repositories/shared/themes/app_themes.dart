@@ -75,7 +75,7 @@ class ThemeCollection {
 
   static darkTheme() {
     final settings = Modular.get<UserConfigsController>();
-    final primaryDarkThemeColor = Colors.grey[800];
+    final primaryDarkThemeColor = Colors.grey[900];
     final secundaryDarkThemeColor = Colors.blue;
 
     return ThemeData(

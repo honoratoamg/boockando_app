@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:boockando_app/app/controllers/app_basket_controller.dart';
 import 'package:boockando_app/app/controllers/app_book_controller.dart';
 import 'package:boockando_app/app/models/book.dart';
@@ -23,7 +21,6 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
   TextEditingController nameController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   Book tempBook;
-  var base64;
 
   @override
   void dispose() {
@@ -35,14 +32,10 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
   @override
   void initState() {
     super.initState();
-    tempBook = appBookController
-        .getBookById(basketController.userBasketBooks[widget.index].bookId);
+    tempBook = appBookController.getBookOnMemoryById(
+        basketController.userBasketBooks[widget.index].bookId);
     nameController.text = tempBook.title;
     numberController.text = tempBook.price.toString();
-
-    if (!appBookController.hasInternet) {
-      base64 = base64Decode(tempBook.bookImage);
-    }
   }
 
   @override
@@ -52,7 +45,7 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(
           children: [
-            imageOfBook(tempBook, base64),
+            Icon(Icons.book, size: 60),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,16 +102,4 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
       ]),
     );
   }
-}
-
-Widget imageOfBook(Book book, var memoryImage) {
-  final appBookOnlineController = Modular.get<AppBookController>();
-
-  return (appBookOnlineController.hasInternet)
-      ? Image.network(
-          book.bookImage,
-          height: 60,
-          width: 60,
-        )
-      : Image.memory(memoryImage);
 }

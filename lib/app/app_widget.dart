@@ -16,7 +16,7 @@ class _AppWidgetState extends State<AppWidget> {
     return Consumer<UserConfigsController>(
       builder: (context, value) {
         return MaterialApp(
-          title: "ManiPedi Studio",
+          title: "Boockando",
           initialRoute: SplashModule.routeName,
           theme: ThemeCollection.getAppTheme(),
           darkTheme: ThemeCollection.darkTheme(),

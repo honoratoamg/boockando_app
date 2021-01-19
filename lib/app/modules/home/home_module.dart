@@ -6,17 +6,17 @@ import 'home_page.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-    Bind((i) => HomeController()),
-  ];
+        Bind((i) => HomeController()),
+      ];
 
   @override
   List<ModularRouter> get routers => [
-    ModularRouter(
-      Modular.initialRoute,
-      child: (_, args) => HomePage(),
-      transition: TransitionType.fadeIn,
-    ),
-  ];
+        ModularRouter(
+          Modular.initialRoute,
+          child: (_, args) => HomePage(),
+          transition: TransitionType.fadeIn,
+        ),
+      ];
 
   static const routeName = '/home';
   static Inject get to => Inject<HomeModule>.of();

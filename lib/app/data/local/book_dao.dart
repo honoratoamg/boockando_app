@@ -45,11 +45,11 @@ class BookDao {
   }
 
   /// Returns a book, if he is on the table
-  Future<Book> getBook({String bookTitle}) async {
+  Future<Book> getBook(int bookId) async {
     final db = await DbHelper.getDatabase();
     final tableName = TABLE_BOOK_NAME;
-    final result = await db
-        .rawQuery("SELECT * FROM '$tableName' WHERE name = '$bookTitle'");
+    final result =
+        await db.rawQuery("SELECT * FROM '$tableName' WHERE id = '$bookId'");
 
     if (result.isNotEmpty) {
       return Book.fromJson(map: result.first);
@@ -66,10 +66,30 @@ class BookDao {
 
       return List.generate(
         maps.length,
-            (i) {
+        (i) {
           return Book.fromJson(map: maps[i]);
         },
       );
+    } catch (ex) {
+      return <Book>[];
+    }
+  }
+
+  /// Return a list of books
+  Future<List<Book>> getBooksByCategory(String category) async {
+    try {
+      final db = await DbHelper.getDatabase();
+      final maps = await db.query(TABLE_BOOK_NAME);
+
+      final categoryBooks = <Book>[];
+
+      for (var i = 0; i < maps.length; i++) {
+        if ((maps[i][TABLE_BOOK_ATT_CATEGORY] == category) ||
+            (category == 'All books')) {
+          categoryBooks.add(Book.fromJson(map: maps[i]));
+        }
+      }
+      return categoryBooks;
     } catch (ex) {
       return <Book>[];
     }

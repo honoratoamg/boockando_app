@@ -26,9 +26,7 @@ class BasketOnlineDao {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, dynamic>{
-        'basketBooks': basketList
-      }),
+      body: jsonEncode(<String, dynamic>{'basketBooks': basketList}),
     );
 
     if (response.statusCode == 200) {
@@ -66,11 +64,32 @@ class BasketOnlineDao {
     };
 
     final jsonBasket = <String, dynamic>{};
-    jsonBasket['finalValue'] = basket.totalValue;
     final body = jsonEncode(jsonBasket);
     final response =
         await server.post(URL_BASKET, body: body, headers: headers);
     final jsonResponse = jsonDecode(response.body);
     return jsonResponse['id'];
+  }
+
+  Future<List<BasketBooks>> getBasketItemsByBasketId(int basketId) async {
+    final response = await server.get("$URL_BASKET?id=${basketId}");
+    //200 OK response
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+
+      // A empty response
+      if (jsonResponse.toString() == '[]') {
+        return null;
+      }
+
+      final purchases = (jsonResponse[0]['basketBooks'] as List)
+          .map((data) => BasketBooks.fromJson(map: data))
+          .toList();
+
+      return purchases;
+    } else {
+      // 200 Fail response
+      throw Exception('Failed to get all purchases');
+    }
   }
 }

@@ -13,7 +13,7 @@ class BasketBooks {
     userId = map['userId'];
     bookId = map['bookId'];
     basketId = map['basketId'];
-    bookPrice = map['bookPrice'];
+    bookPrice = map['bookPrice'].toDouble();
     bookQtd = map['bookQtd'];
   }
 
