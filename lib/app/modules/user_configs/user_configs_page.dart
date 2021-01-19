@@ -21,7 +21,7 @@ class UserConfigsPage extends StatelessWidget {
             ChangeThemeWidget(),
             TextSizeWidget(),
             UserSignButton(context),
-            UserLogout(),
+            UserLogout(context),
           ],
         ),
       ),
@@ -29,7 +29,7 @@ class UserConfigsPage extends StatelessWidget {
   }
 }
 
-Widget UserLogout() {
+Widget UserLogout(BuildContext context) {
   final userController = Modular.get<AppUserController>();
 
   return Card(
@@ -43,7 +43,7 @@ Widget UserLogout() {
           child: Row(
             children: [
               Spacer(),
-              Text("Logout", style: TextStyle(fontWeight: FontWeight.bold)),
+              Text("Logout", style: TextStyle(color: Theme.of(context).buttonColor, fontWeight: FontWeight.bold)),
               SizedBox(width: 5),
               Icon(Icons.logout),
             ],
@@ -65,7 +65,7 @@ Widget UserSignButton(BuildContext context) {
         child: Container(
           child: Center(
               child: Text("Update my account",
-                  style: TextStyle(fontWeight: FontWeight.bold))),
+                  style: TextStyle(color: Theme.of(context).buttonColor , fontWeight: FontWeight.bold))),
         ),
       ),
     ),

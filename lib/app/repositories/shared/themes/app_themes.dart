@@ -2,7 +2,6 @@ import 'package:boockando_app/app/controllers/app_user_configs_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-
 enum AppThemesEnum { lightTheme, darkTheme, highContrast, system }
 
 class ThemeCollection {
@@ -25,7 +24,7 @@ class ThemeCollection {
 
   static defaultTheme() {
     final settings = Modular.get<UserConfigsController>();
-    const primaryColor = Colors.cyan;
+    const primaryColor = Colors.red;
 
     return ThemeData(
       appBarTheme: AppBarTheme(
@@ -40,6 +39,7 @@ class ThemeCollection {
       ),
       brightness: Brightness.light,
       cardColor: primaryColor[100],
+      buttonColor: primaryColor,
       buttonTheme: ButtonThemeData(
         buttonColor: primaryColor,
         shape: RoundedRectangleBorder(),
@@ -91,6 +91,7 @@ class ThemeCollection {
       ),
       brightness: Brightness.dark,
       cardColor: primaryDarkThemeColor,
+      buttonColor: secundaryDarkThemeColor,
       buttonTheme: ButtonThemeData(
         buttonColor: secundaryDarkThemeColor,
         shape: RoundedRectangleBorder(),
@@ -126,8 +127,8 @@ class ThemeCollection {
 
   static highContrastTheme() {
     final settings = Modular.get<UserConfigsController>();
-    final primaryDarkThemeColor = Colors.grey[800];
-    final secundaryDarkThemeColor = Colors.yellow;
+    final primaryHcThemeColor = Colors.grey[800];
+    final secundaryHcThemeColor = Colors.yellow;
 
     return ThemeData(
         appBarTheme: AppBarTheme(
@@ -138,15 +139,16 @@ class ThemeCollection {
                 color: Colors.white,
                 fontWeight: FontWeight.bold),
           ),
-          color: primaryDarkThemeColor,
+          color: primaryHcThemeColor,
         ),
         brightness: Brightness.dark,
-        cardColor: primaryDarkThemeColor,
+        cardColor: primaryHcThemeColor,
+        buttonColor: secundaryHcThemeColor,
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: secundaryDarkThemeColor,
+          backgroundColor: secundaryHcThemeColor,
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: secundaryDarkThemeColor,
+          buttonColor: secundaryHcThemeColor,
           shape: RoundedRectangleBorder(),
           textTheme: ButtonTextTheme.primary,
         ),

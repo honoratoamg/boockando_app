@@ -33,8 +33,11 @@ class _StorePageState extends State<StorePage> {
           valueListenable: appBasketController.totalValue,
           builder: (context, value, child) {
             return Center(
-              child: Text(
-                  "Bookando Store - R\$ ${appBasketController.totalValue.value}"),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text(
+                    "Bookando Store R\$ ${appBasketController.totalValue.value}"),
+              ),
             );
           },
         )),
@@ -73,11 +76,6 @@ class _StorePageState extends State<StorePage> {
                   icon: Icon(Icons.grid_view),
                   onPressed: () {
                     appBookController.setDesign(StaggeredTile.count(2, 4));
-                  }),
-              IconButton(
-                  icon: Icon(Icons.menu),
-                  onPressed: () {
-                    appBookController.setDesign(StaggeredTile.count(4, 4));
                   }),
               IconButton(
                   icon: Icon(Icons.menu),
@@ -133,8 +131,8 @@ Widget basketBadge(BuildContext context, int value) {
     animationType: BadgeAnimationType.scale,
     badgeContent: Text(
       value.toString(),
+      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
     ),
-    badgeColor: Theme.of(context).cardColor,
+    badgeColor: Theme.of(context).buttonColor,
   );
 }
-

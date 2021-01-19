@@ -85,6 +85,7 @@ class _BookWidgetState extends State<BookWidget> implements Disposable {
                 },
                 child: Text(
                   "Add to Basket".toUpperCase(),
+                  style: TextStyle(color: Theme.of(context).buttonColor),
                 ),
               ),
               //IconButton(icon: Icon(Icons.add_circle_outline), onPressed: null)

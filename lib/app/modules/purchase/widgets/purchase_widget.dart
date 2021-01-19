@@ -46,7 +46,6 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.bar_chart, size: 20),
                           Flexible(
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -59,7 +58,6 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
                       ),
                       Row(
                         children: [
-                          Icon(Icons.calendar_today, size: 20),
                           Text("Date: ${purchaseTemp.day}/"
                               "${purchaseTemp.month}"),
                         ],
@@ -70,7 +68,8 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
                 Row(
                   children: [
                     IconButton(
-                        icon: Icon(Icons.remove_red_eye_rounded),
+                        icon: Icon(Icons.remove_red_eye_rounded,
+                            color: Theme.of(context).buttonColor),
                         onPressed: () => setState(() {
                               Navigator.pushNamed(
                                 context,
@@ -82,7 +81,8 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
                               );
                             })),
                     IconButton(
-                        icon: Icon(Icons.delete),
+                        icon: Icon(Icons.delete,
+                            color: Theme.of(context).buttonColor),
                         onPressed: () async {
                           bool isConnectedUser;
                           await InternetConnectionChecker.checkConnection()

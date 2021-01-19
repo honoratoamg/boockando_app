@@ -8,6 +8,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class StoreController {
   final basketController = Modular.get<AppBasketController>();
   final userController = Modular.get<AppUserController>();
+  final isActionSuccess = ValueNotifier<bool>(false);
 
   showAlertConfirmation(BuildContext context) {
     showDialog(
@@ -21,12 +22,17 @@ class StoreController {
                 child: Text("Sure!"),
                 onPressed: () async {
                   await basketController.finishPurchase();
-                  await LocalNotificationUtils.showNotification(
-                    title:
-                        "Wow! We received your purchase, ${userController.loggedUser.name}! :)",
-                    body: "You have purchased a Boockando quality book!",
-                  );
+                  // Animation
+                  isActionSuccess.value = true;
                   Modular.to.pop();
+                  await Future.delayed(Duration(seconds: 2), () async {
+                    await LocalNotificationUtils.showNotification(
+                      title:
+                          "Wow! We received your purchase, ${userController.loggedUser.name}! :)",
+                      body: "You have purchased a Boockando quality book!",
+                    );
+                    isActionSuccess.value = false;
+                  });
                 }),
             FlatButton(
               child: Text("Not now"),

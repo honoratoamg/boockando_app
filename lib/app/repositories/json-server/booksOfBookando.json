@@ -5,11 +5,332 @@
       "name": "ana",
       "password": "123",
       "email": "ana@meuemail.com"
+    },
+    {
+      "id": 2,
+      "name": "jacquin",
+      "password": "123",
+      "email": "email@email.com"
     }
   ],
   "baskets": [
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 1,
+          "bookPrice": 60.5,
+          "bookQtd": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 2,
+          "bookPrice": 45,
+          "bookQtd": 2
+        }
+      ],
+      "id": 2
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 3,
+          "bookPrice": 60.5,
+          "bookQtd": 2
+        }
+      ],
+      "id": 3
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 4,
+          "bookPrice": 60.5,
+          "bookQtd": 2
+        }
+      ],
+      "id": 4
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 5,
+          "bookPrice": 45,
+          "bookQtd": 2
+        }
+      ],
+      "id": 5
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 6,
+          "bookPrice": 45,
+          "bookQtd": 2
+        },
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 6,
+          "bookPrice": 60.5,
+          "bookQtd": 2
+        }
+      ],
+      "id": 6
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 3,
+          "basketId": 7,
+          "bookPrice": 30,
+          "bookQtd": 1
+        }
+      ],
+      "id": 7
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 8,
+          "bookPrice": 60.5,
+          "bookQtd": 1
+        }
+      ],
+      "id": 8
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 9,
+          "bookPrice": 60.5,
+          "bookQtd": 1
+        }
+      ],
+      "id": 9
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 10,
+          "bookPrice": 45,
+          "bookQtd": 2
+        }
+      ],
+      "id": 10
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 11,
+          "bookPrice": 45,
+          "bookQtd": 1
+        }
+      ],
+      "id": 11
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 12,
+          "bookPrice": 45,
+          "bookQtd": 1
+        }
+      ],
+      "id": 12
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 13,
+          "bookPrice": 60.5,
+          "bookQtd": 1
+        }
+      ],
+      "id": 13
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 2,
+          "basketId": 14,
+          "bookPrice": 45,
+          "bookQtd": 1
+        }
+      ],
+      "id": 14
+    }
   ],
   "purchases": [
+    {
+      "id": 1,
+      "basketId": 1,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "60.5",
+      "isDeleted": 0
+    },
+    {
+      "id": 2,
+      "basketId": 2,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "2",
+      "totalValue": "90.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 3,
+      "basketId": 3,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "2",
+      "totalValue": "121.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 4,
+      "basketId": 4,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "2",
+      "totalValue": "121.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 5,
+      "basketId": 5,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "2",
+      "totalValue": "90.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 6,
+      "basketId": 6,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "4",
+      "totalValue": "211.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 7,
+      "basketId": 7,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "30.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 8,
+      "basketId": 8,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "60.5",
+      "isDeleted": 0
+    },
+    {
+      "id": 9,
+      "basketId": 9,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "60.5",
+      "isDeleted": 0
+    },
+    {
+      "id": 10,
+      "basketId": 10,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "2",
+      "totalValue": "90.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 11,
+      "basketId": 11,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "45.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 12,
+      "basketId": 12,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "45.0",
+      "isDeleted": 0
+    },
+    {
+      "id": 13,
+      "basketId": 13,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "60.5",
+      "isDeleted": 0
+    },
+    {
+      "id": 14,
+      "basketId": 14,
+      "userId": 1,
+      "day": "19",
+      "month": "1",
+      "amountItems": "1",
+      "totalValue": "45.0",
+      "isDeleted": 0
+    }
   ],
   "books": [
     {

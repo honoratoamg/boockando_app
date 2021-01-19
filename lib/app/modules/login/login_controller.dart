@@ -17,6 +17,7 @@ class LoginController extends ChangeNotifier implements Disposable {
   TextEditingController passwordSgnController = TextEditingController();
   TextEditingController nameSgnController = TextEditingController();
   TextEditingController emailSgnController = TextEditingController();
+  final isActionSuccess = ValueNotifier<bool>(false);
 
   final userController = Modular.get<AppUserController>();
   final appController = Modular.get<AppController>();
@@ -64,7 +65,11 @@ class LoginController extends ChangeNotifier implements Disposable {
 
       appController.initializeAll(user);
 
-      await Modular.to.pushReplacementNamed(HomeModule.routeName);
+      // Animation
+      isActionSuccess.value = true;
+      await Future.delayed(Duration(seconds: 2), () async {
+        await Modular.to.pushReplacementNamed(HomeModule.routeName);
+      });
     } else {
       AlertsUtils.connectionFailed(context);
     }

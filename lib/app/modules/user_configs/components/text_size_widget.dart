@@ -53,9 +53,11 @@ class TextSizeSlider extends StatelessWidget {
                 trackShape: RoundedRectSliderTrackShape(),
                 tickMarkShape: RoundSliderTickMarkShape(),
                 activeTickMarkColor:
-                    Theme.of(context).floatingActionButtonTheme.backgroundColor,
+                    Theme.of(context).buttonColor,
                 inactiveTickMarkColor:
-                    Theme.of(context).floatingActionButtonTheme.backgroundColor,
+                    Theme.of(context).buttonColor,
+                thumbColor: Theme.of(context).buttonColor,
+                overlayColor: Theme.of(context).buttonColor.withOpacity(0.4),
               ),
               child: Slider(
                 value: settings.fontSize,
