@@ -9,9 +9,9 @@ Observações importantes para execução do app:
 
 json-server --watch booksOfBoockando.json
 
-Obs.: Você deve estar no caminho do arquivo para executar o comando. [booksOfBoockando.json](repositories/json_server/livros.json)).
+Obs.: Você deve estar no caminho do arquivo para executar o comando. [booksOfBoockando.json](lib/app/repositories/json-server/booksOfBoockando.json)).
 
-2. A constante [URL_SERVER](data/online/consts/consts.dart) está configurada para o uso pelo emulador Android (emulador AVD - (http://10.0.2.2:3000/').  Caso você queira executar de um smartphone, utilize o valor: '(http://ip.do.seu.dispositivo:3000/)'.
+2. A constante [URL_SERVER](lib/app/data/online/consts/consts.dart) está configurada para o uso pelo emulador Android (emulador AVD - (http://10.0.2.2:3000/').  Caso você queira executar de um smartphone, utilize o valor: '(http://ip.do.seu.dispositivo:3000/)'.
 
 ## Features
 
