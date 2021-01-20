@@ -12,8 +12,3 @@ class InternetConnectionChecker {
     }
   }
 }
-
-
-// bool connectedUser;
-// await InternetConnectionChecker.checkConnection()
-// .then((value) => connectedUser = value);

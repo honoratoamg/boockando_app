@@ -13,7 +13,7 @@ class AppBookController extends ChangeNotifier {
   final bookOnlineDao = Modular.get<BookOnlineDao>();
   final bookDao = Modular.get<BookDao>();
 
-  var layoutDesign = StaggeredTile.count(2, 3);
+  var layoutDesign = StaggeredTile.count(2, 4);
   String selectedCategory;
   bool hasInternet = true;
   List<Book> books;

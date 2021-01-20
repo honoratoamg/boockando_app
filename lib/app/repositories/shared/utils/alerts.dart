@@ -38,9 +38,7 @@ class AlertsUtils {
         "Please verify your connection or try again later.");
   }
 
-  static
-      unexpectedError(BuildContext context) {
-    showAlert(context, "Unexpected Erro!",
-        "Try again later.");
+  static unexpectedError(BuildContext context) {
+    showAlert(context, "Unexpected Erro!", "Try again later.");
   }
 }

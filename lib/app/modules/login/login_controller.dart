@@ -67,6 +67,7 @@ class LoginController extends ChangeNotifier implements Disposable {
 
       // Animation
       isActionSuccess.value = true;
+      removeFocus(context);
       await Future.delayed(Duration(seconds: 2), () async {
         await Modular.to.pushReplacementNamed(HomeModule.routeName);
       });
@@ -125,6 +126,15 @@ class LoginController extends ChangeNotifier implements Disposable {
       nameSgnController.text = userController.loggedUser.name;
       passwordSgnController.text = userController.loggedUser.password;
       emailSgnController.text = userController.loggedUser.email;
+    }
+  }
+
+  /// Remove focus of a Widget.
+  removeFocus(BuildContext context) {
+    final currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
     }
   }
 }

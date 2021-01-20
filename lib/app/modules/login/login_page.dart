@@ -1,8 +1,8 @@
-import 'package:boockando_app/app/modules/login/login_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:boockando_app/app/modules/login/login_controller.dart';
 import 'Pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {

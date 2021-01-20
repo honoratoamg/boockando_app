@@ -32,8 +32,8 @@ linter:
     prefer_single_quotes: false
     curly_braces_in_flow_control_structures: false
     always_declare_return_types: false
-    library_prefixes: false # depois voltar
-    prefer_asserts_with_message: false # depois voltar
+    library_prefixes: true
+    prefer_asserts_with_message: true
 analyzer:
   exclude: [build/**, test/**, lib/**/*.g.dart]
   errors:

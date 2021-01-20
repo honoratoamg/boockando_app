@@ -1,7 +1,8 @@
-import 'package:boockando_app/app/controllers/app_book_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'package:boockando_app/app/controllers/app_book_controller.dart';
 
 class BookPageArguments {
   BookPageArguments({this.index});
@@ -33,7 +34,10 @@ class _BookPageState extends State<BookPage> implements Disposable {
   void initState() {
     super.initState();
     nameController.text = appBookOnlineController.books[widget.index].title;
-    aboutController.text = appBookOnlineController.books[widget.index].about;
+    aboutController.text =
+        "Author:  ${appBookOnlineController.books[widget.index].author} \n"
+        "Category:  ${appBookOnlineController.books[widget.index].category}  \n"
+        "About:  ${appBookOnlineController.books[widget.index].about}";
   }
 
   @override
@@ -41,7 +45,8 @@ class _BookPageState extends State<BookPage> implements Disposable {
     return Scaffold(
       appBar: AppBar(
         title: TextFormField(
-          decoration: InputDecoration(isDense: true,
+          decoration: InputDecoration(
+              isDense: true,
               border: InputBorder.none,
               hintText: "Book's title"),
           minLines: 1,
@@ -81,7 +86,7 @@ class _BookPageState extends State<BookPage> implements Disposable {
                     isDense: true,
                     border: InputBorder.none,
                     hintText: 'About book'),
-                maxLines: 10,
+                maxLines: 8,
                 textAlign: TextAlign.justify,
                 controller: aboutController,
                 style: TextStyle(fontWeight: FontWeight.normal),

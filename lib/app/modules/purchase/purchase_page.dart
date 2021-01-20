@@ -1,11 +1,12 @@
-import 'package:boockando_app/app/controllers/app_user_controller.dart';
-import 'package:boockando_app/app/models/purchase.dart';
-import 'package:boockando_app/app/modules/purchase/purchase_controller.dart';
-import 'package:boockando_app/app/modules/purchase/widgets/purchase_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'package:boockando_app/app/controllers/app_user_controller.dart';
+import 'package:boockando_app/app/models/purchase.dart';
+import 'package:boockando_app/app/modules/purchase/purchase_controller.dart';
+import 'package:boockando_app/app/modules/purchase/widgets/purchase_widget.dart';
 
 class PurchasePage extends StatefulWidget {
   @override

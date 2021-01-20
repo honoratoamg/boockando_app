@@ -1,11 +1,11 @@
-import 'package:boockando_app/app/models/purchase.dart';
-import 'package:boockando_app/app/modules/purchase/page/report_basket_page.dart';
-import 'package:boockando_app/app/repositories/shared/utils/alerts.dart';
-import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:boockando_app/app/models/purchase.dart';
+import 'package:boockando_app/app/modules/purchase/page/report_basket_page.dart';
+import 'package:boockando_app/app/repositories/shared/utils/alerts.dart';
+import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
 import '../purchase_controller.dart';
 
 class PurchaseWidget extends StatefulWidget {

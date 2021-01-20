@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:boockando_app/app/controllers/app_basket_controller.dart';
 import 'package:boockando_app/app/models/basket_books.dart';
 import 'package:boockando_app/app/models/purchase.dart';
 import 'package:boockando_app/app/modules/purchase/purchase_controller.dart';
 import 'package:boockando_app/app/modules/purchase/widgets/report_basket_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class ReportBasketPageArguments {
   ReportBasketPageArguments({this.key, this.purchase});
@@ -14,8 +15,7 @@ class ReportBasketPageArguments {
 }
 
 class ReportBasketPage extends StatefulWidget {
-  const ReportBasketPage({Key key, this.purchase})
-      : super(key: key);
+  const ReportBasketPage({Key key, this.purchase}) : super(key: key);
   static const routeName = "/reportBasket";
   final purchase;
 
@@ -40,8 +40,7 @@ class _ReportBasketPageState extends State<ReportBasketPage> {
       appBar: AppBar(
           title: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Text(
-            "My Purchase ${purchaseTemp.id}"
+        child: Text("My Purchase ${purchaseTemp.id}"
             "${purchaseTemp.day}"
             "${purchaseTemp.month}"),
       )),
@@ -52,13 +51,11 @@ class _ReportBasketPageState extends State<ReportBasketPage> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                    "Books's Amount: ${purchaseTemp.amountItems}"),
-                Text(
-                    'Total Value: ${purchaseTemp.totalValue}'),
+                Text("Books's Amount: ${purchaseTemp.amountItems}"),
+                Text('Total Value: ${purchaseTemp.totalValue}'),
                 FutureBuilder(
-                  future: basketController.getBasketItems(
-                      purchaseTemp.basketId),
+                  future:
+                      basketController.getBasketItems(purchaseTemp.basketId),
                   builder:
                       (context, AsyncSnapshot<List<BasketBooks>> snapshot) {
                     if (snapshot.hasData) {

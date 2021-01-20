@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 enum AppThemesEnum { lightTheme, darkTheme, highContrast, system }
 
 class ThemeCollection {
-  /// Obtem o tema do usuario
+  /// Get user Theme
   static ThemeData getAppTheme() {
     final settings = Modular.get<UserConfigsController>();
 
@@ -128,7 +128,7 @@ class ThemeCollection {
   static highContrastTheme() {
     final settings = Modular.get<UserConfigsController>();
     final primaryHcThemeColor = Colors.grey[800];
-    final secundaryHcThemeColor = Colors.yellow;
+    final secondaryHcThemeColor = Colors.yellow;
 
     return ThemeData(
         appBarTheme: AppBarTheme(
@@ -143,12 +143,12 @@ class ThemeCollection {
         ),
         brightness: Brightness.dark,
         cardColor: primaryHcThemeColor,
-        buttonColor: secundaryHcThemeColor,
+        buttonColor: secondaryHcThemeColor,
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: secundaryHcThemeColor,
+          backgroundColor: secondaryHcThemeColor,
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: secundaryHcThemeColor,
+          buttonColor: secondaryHcThemeColor,
           shape: RoundedRectangleBorder(),
           textTheme: ButtonTextTheme.primary,
         ),

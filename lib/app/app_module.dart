@@ -1,13 +1,12 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:boockando_app/app/data/online/user_online_dao.dart';
 import 'package:boockando_app/app/modules/login/login_module.dart';
+import 'package:boockando_app/app/controllers/app_user_configs_controller.dart';
+import 'package:boockando_app/app/modules/splash_screen/splash_screen_module.dart';
 
 import 'controllers/app_basket_controller.dart';
 import 'controllers/app_book_controller.dart';
-import 'package:boockando_app/app/controllers/app_user_configs_controller.dart';
-import 'package:boockando_app/app/modules/splash_screen/splash_screen_module.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-
 import 'app_controller.dart';
 import 'app_widget.dart';
 import 'controllers/app_user_controller.dart';
@@ -35,12 +34,12 @@ class AppModule extends MainModule {
         Bind((i) => LoginController()),
         Bind((i) => UserOnlineDao()),
         Bind((i) => BookOnlineDao()),
+        Bind((i) => BasketOnlineDao()),
         Bind((i) => PurchaseOnlineDao()),
         Bind((i) => BookDao()),
         Bind((i) => BasketDao()),
         Bind((i) => PurchaseDao()),
         Bind((i) => BasketBooksDao()),
-        Bind((i) => BasketOnlineDao()),
       ];
 
   @override

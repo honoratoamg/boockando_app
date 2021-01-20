@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:boockando_app/app/controllers/app_basket_controller.dart';
 import 'package:boockando_app/app/modules/store/store_controller.dart';
 import 'package:boockando_app/app/modules/store/widget/bookBasket_widget.dart';
 import 'package:boockando_app/app/repositories/shared/utils/alerts.dart';
 import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class BasketPage extends StatefulWidget {
   static const routeName = '/basket';
@@ -126,8 +127,8 @@ class _BasketPageState extends State<BasketPage> {
                             Icon(Icons.work_off_outlined, size: 60),
                             Flexible(
                                 child: SingleChildScrollView(
-                                    child: Text(
-                                        'Oops..Your basket is empty!'))),
+                                    child:
+                                        Text('Oops..Your basket is empty!'))),
                           ],
                         ));
                 }),

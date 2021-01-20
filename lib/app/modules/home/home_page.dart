@@ -1,13 +1,12 @@
-import 'package:boockando_app/app/controllers/app_book_controller.dart';
-import 'package:boockando_app/app/modules/purchase/purchase_module.dart';
-import 'package:boockando_app/app/modules/store/store_module.dart';
-import 'package:boockando_app/app/modules/user_configs/user_configs_module.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'package:boockando_app/app/controllers/app_book_controller.dart';
+import 'package:boockando_app/app/modules/purchase/purchase_module.dart';
+import 'package:boockando_app/app/modules/store/store_module.dart';
+import 'package:boockando_app/app/modules/user_configs/user_configs_module.dart';
 import 'home_controller.dart';
-
 
 class HomePage extends StatefulWidget {
   @override

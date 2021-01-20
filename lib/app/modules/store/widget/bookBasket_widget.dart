@@ -1,9 +1,10 @@
-import 'package:boockando_app/app/controllers/app_basket_controller.dart';
-import 'package:boockando_app/app/controllers/app_book_controller.dart';
-import 'package:boockando_app/app/models/book.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'package:boockando_app/app/controllers/app_basket_controller.dart';
+import 'package:boockando_app/app/controllers/app_book_controller.dart';
+import 'package:boockando_app/app/models/book.dart';
 
 class BookBasketWidget extends StatefulWidget {
   const BookBasketWidget({Key key, this.index}) : super(key: key);

@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'package:boockando_app/app/controllers/app_user_controller.dart';
 import 'package:boockando_app/app/data/local/purchase_dao.dart';
 import 'package:boockando_app/app/data/online/purchase_online_dao.dart';
@@ -5,9 +9,6 @@ import 'package:boockando_app/app/models/basket.dart';
 import 'package:boockando_app/app/models/purchase.dart';
 import 'package:boockando_app/app/repositories/shared/utils/alerts.dart';
 import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class PurchaseController extends ChangeNotifier {
   final purchaseOnlineDao = Modular.get<PurchaseOnlineDao>();
@@ -26,7 +27,7 @@ class PurchaseController extends ChangeNotifier {
       await purchaseDao.updatePurchase(purchase);
 
       notifyListeners();
-    }catch(ex) {
+    } catch (ex) {
       debugPrint("${ex}");
       AlertsUtils.unexpectedError(context);
     }

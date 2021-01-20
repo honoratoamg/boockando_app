@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:boockando_app/app/data/local/basket_books_dao.dart';
 import 'package:boockando_app/app/data/local/basket_dao.dart';
@@ -9,9 +11,6 @@ import 'package:boockando_app/app/models/book.dart';
 import 'package:boockando_app/app/modules/purchase/purchase_controller.dart';
 import 'package:boockando_app/app/repositories/local/shared_prefs/shared_prefs.dart';
 import 'package:boockando_app/app/repositories/shared/utils/internet_connection_checker.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-
 import 'app_user_controller.dart';
 
 class AppBasketController extends ChangeNotifier {
@@ -142,7 +141,8 @@ class AppBasketController extends ChangeNotifier {
     }
 
     //Create a purchase and insert in local database and server-json
-    purchaseController.createPurchase(basket, amountBooks.value.toString(), totalValue.value.toString());
+    purchaseController.createPurchase(
+        basket, amountBooks.value.toString(), totalValue.value.toString());
 
     //Clear memory basket
     await clearBasket();
@@ -182,7 +182,9 @@ class AppBasketController extends ChangeNotifier {
           .getBasketItemsByBasketId(basketId)
           .then((value) => basketBooks = value);
     } else {
-      await basketDao.getBasketItemsByBasketId(basketId).then((value) => basketBooks = value);
+      await basketDao
+          .getBasketItemsByBasketId(basketId)
+          .then((value) => basketBooks = value);
     }
 
     return basketBooks;
