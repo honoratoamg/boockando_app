@@ -11,7 +11,7 @@ json-server --watch booksOfBoockando.json
 
 Obs.: No terminal, você tem de estar no caminho do arquivo para executar o comando.
 
-2. A constante [URL_SERVER] está configurada para o uso pelo emulador Android (emulador AVD - (http://10.0.2.2:3000/').  Caso você queira executar de um smartphone, utilize o valor: '(http://ip.do.seu.dispositivo:3000/)'.
+2. A constante [URL_SERVER] está configurada para o uso pelo emulador Android (emulador AVD - 'http://10.0.2.2:3000/'.  Caso você queira executar de um smartphone, utilize o valor: 'http://ip.do.seu.dispositivo:3000/'.
 
 ## Features
 
