@@ -32,13 +32,18 @@ class _BasketPageState extends State<BasketPage> {
         builder: (context, value, child) {
           return Scaffold(
             appBar: AppBar(
-                title: ValueListenableBuilder(
-              valueListenable: basketController.totalValue,
-              builder: (context, value, child) {
-                return Text(
-                    "Basket's Total: R\$ ${basketController.totalValue.value}");
-              },
-            )),
+              title: ValueListenableBuilder(
+                valueListenable: basketController.totalValue,
+                builder: (context, value, child) {
+                  return SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Text(
+                        "Basket's Total: R\$ ${basketController.totalValue.value.toStringAsFixed(2)}"),
+                  );
+                },
+              ),
+              centerTitle: true,
+            ),
             body: Stack(alignment: AlignmentDirectional.center, children: <
                 Widget>[
               Positioned(

@@ -52,7 +52,7 @@ class _ReportBasketPageState extends State<ReportBasketPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Books's Amount: ${purchaseTemp.amountItems}"),
-                Text('Total Value: ${purchaseTemp.totalValue}'),
+                Text('Total Value: ${double.parse(purchaseTemp.totalValue).toStringAsFixed(2)}'),
                 FutureBuilder(
                   future:
                       basketController.getBasketItems(purchaseTemp.basketId),

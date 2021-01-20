@@ -86,11 +86,13 @@ class _BookBasketWidgetState extends State<BookBasketWidget>
                   children: [
                     IconButton(
                         icon: Icon(Icons.add_circle),
+                        color: Theme.of(context).buttonColor,
                         onPressed: () => setState(() {
                               basketController.basketAddBook(tempBook);
                             })),
                     IconButton(
                         icon: Icon(Icons.remove_circle),
+                        color: Theme.of(context).buttonColor,
                         onPressed: () {
                           basketController.basketRemoveBook(tempBook);
                         }),

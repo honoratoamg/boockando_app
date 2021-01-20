@@ -30,18 +30,18 @@ class _StorePageState extends State<StorePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-            title: ValueListenableBuilder(
-          valueListenable: appBasketController.totalValue,
-          builder: (context, value, child) {
-            return Center(
-              child: SingleChildScrollView(
+          title: ValueListenableBuilder(
+            valueListenable: appBasketController.totalValue,
+            builder: (context, value, child) {
+              return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Text(
-                    "Boockando Store R\$ ${appBasketController.totalValue.value}"),
-              ),
-            );
-          },
-        )),
+                    "Boockando Store R\$ ${appBasketController.totalValue.value.toStringAsFixed(2)}"),
+              );
+            },
+          ),
+          centerTitle: true,
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -128,8 +128,8 @@ class _StorePageState extends State<StorePage> {
 
 Widget basketBadge(BuildContext context, int value) {
   return Badge(
-    animationDuration: Duration(milliseconds: 1),
-    animationType: BadgeAnimationType.scale,
+    animationDuration: Duration(seconds: 1),
+    animationType: BadgeAnimationType.fade,
     badgeContent: Text(
       value.toString(),
       style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
