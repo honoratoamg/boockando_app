@@ -34,7 +34,7 @@ Obs.: Você deve estar no caminho do arquivo para executar o comando. [booksOfBo
 ## Screenshots
 Home Page                  |  Histórico de compras
 :-------------------------:|:-------------------------:
-<img src="screenshots_readme/boockando_1.png" width="300">|<img src="screenshots_readme/Boockando_2.png" width="300">|
+<img src="screenshots_readme/boockando_1.png" width="300">|<img src="screenshots_readme/boockando_2.png" width="300">|
 
 Feedbacks de conexão       |  Configurações de personalização
 :-------------------------:|:-------------------------:
