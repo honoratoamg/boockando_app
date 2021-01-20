@@ -5,13 +5,13 @@ Um app Flutter de uma loja virtual de livros, onde os seus dados são consumidos
 ## Get Started
 Observações importantes para execução do app:
 
-1. Depois de instalar o json-server (https://www.npmjs.com/package/json-server), para executar o aplicativo corretamente, o usuário deve estabeleçer conexão com o json server, executando o seguinte comando no terminal:
+1. Depois de instalar o [json-server](https://www.npmjs.com/package/json-server), para executar o aplicativo corretamente, o usuário deve estabeleçer conexão com o json server, executando o seguinte comando no terminal:
 
 json-server --watch booksOfBoockando.json
 
-Obs.: Você deve estar no caminho do arquivo para executar o comando. [booksOfBoockando.json](lib/app/repositories/json-server/booksOfBoockando.json)).
+Obs.: No terminal, você tem de estar no caminho do arquivo para executar o comando.
 
-2. A constante [URL_SERVER](lib/app/data/online/consts/consts.dart) está configurada para o uso pelo emulador Android (emulador AVD - (http://10.0.2.2:3000/').  Caso você queira executar de um smartphone, utilize o valor: '(http://ip.do.seu.dispositivo:3000/)'.
+2. A constante [URL_SERVER] está configurada para o uso pelo emulador Android (emulador AVD - (http://10.0.2.2:3000/').  Caso você queira executar de um smartphone, utilize o valor: '(http://ip.do.seu.dispositivo:3000/)'.
 
 ## Features
 
