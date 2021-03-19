@@ -1,13 +1,81 @@
 {
   "users": [
+    {
+      "id": 1,
+      "name": "zuka",
+      "password": "123",
+      "email": "zuka@zuka.com"
+    }
   ],
-
   "baskets": [
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 1,
+          "basketId": 1,
+          "bookPrice": 60.5,
+          "bookQtd": 2
+        },
+        {
+          "userId": 1,
+          "bookId": 4,
+          "basketId": 1,
+          "bookPrice": 70.5,
+          "bookQtd": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "basketBooks": [
+        {
+          "userId": 1,
+          "bookId": 6,
+          "basketId": 2,
+          "bookPrice": 60.5,
+          "bookQtd": 1
+        },
+        {
+          "userId": 1,
+          "bookId": 8,
+          "basketId": 2,
+          "bookPrice": 50,
+          "bookQtd": 2
+        },
+        {
+          "userId": 1,
+          "bookId": 7,
+          "basketId": 2,
+          "bookPrice": 10,
+          "bookQtd": 1
+        }
+      ],
+      "id": 2
+    }
   ],
-
   "purchases": [
+    {
+      "id": 1,
+      "basketId": 1,
+      "userId": 1,
+      "day": "19",
+      "month": "3",
+      "amountItems": "3",
+      "totalValue": "191.5",
+      "isDeleted": 0
+    },
+    {
+      "id": 2,
+      "basketId": 2,
+      "userId": 1,
+      "day": "19",
+      "month": "3",
+      "amountItems": "4",
+      "totalValue": "170.5",
+      "isDeleted": 0
+    }
   ],
-
   "books": [
     {
       "id": 1,
